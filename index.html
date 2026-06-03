@@ -79,66 +79,60 @@
       <div class="hero-left">
         <p class="hero-eyebrow reveal">
           <i class="fa-solid fa-circle-dot pulse-dot"></i>
-          B.Tech · Arya College · Jaipur
+          Creative Developer & Digital Storyteller
         </p>
         <h1 class="hero-name reveal">
-          Veer<br>
-          Pratap<br>
-          <em>Singh.</em>
+          Veer Pratap<br><em>Singh.</em>
         </h1>
-        <p class="hero-typed-line reveal">
-          <span class="mono-bracket">&lt;</span>
-          <span id="typed" class="typed-text"></span>
-          <span class="mono-bracket"> /&gt;</span>
-        </p>
+        <h2 class="hero-headline reveal">
+          Designing digital experiences where <br><span class="gradient-text">code meets creativity.</span>
+        </h2>
         <p class="hero-desc reveal">
-          Developer · Designer · Visual Storyteller.<br>
-          I craft digital experiences where <strong>technology meets aesthetics</strong> — clean code, compelling
-          design, real impact.
+          From code to camera, I create digital experiences that are functional, aesthetic, and memorable.
         </p>
-        <div class="hero-cta reveal">
+        <div class="hero-cta reveal" style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="#projects" class="btn-primary">
-            <i class="fa-solid fa-eye"></i> View Work
+            <i class="fa-solid fa-eye"></i> View My Work
           </a>
-          <a href="https://github.com/xyresiiic" target="_blank" class="btn-ghost">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-        </div>
-        <div class="hero-socials reveal">
-          <a href="https://github.com/xyresiiic" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://linkedin.com/in/veer-pratap-singh-77702b316" target="_blank" title="LinkedIn"><i
-              class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://instagram.com/ivee.rrr" target="_blank" title="Instagram"><i
-              class="fa-brands fa-instagram"></i></a>
-          <a href="mailto:xyresiiic@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          <div style="display: flex; gap: 0.5rem;">
+            <a href="resume.pdf" target="_blank" class="btn-ghost">
+              <i class="fa-solid fa-file-pdf"></i> View Resume
+            </a>
+            <a href="resume.pdf" download class="btn-ghost" title="Download Resume"
+              style="padding: 0 1.25rem; display: flex; align-items: center; justify-content: center;">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="hero-right reveal">
-        <div class="hero-img-frame">
-          <div class="frame-corner tl"></div>
-          <div class="frame-corner tr"></div>
-          <div class="frame-corner bl"></div>
-          <div class="frame-corner br"></div>
-          <img src="images/DP.png" alt="Veer Pratap Singh"
-            onerror="this.style.display='none';document.getElementById('img-fallback').style.display='flex';" />
-          <div id="img-fallback" class="img-fallback">
-            <i class="fa-solid fa-user"></i>
-            <span>DP.png</span>
+        <div class="hero-floating-stack">
+          <!-- Code Panel -->
+          <div class="float-card code-card premium-card" data-float="1">
+            <div class="card-head">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            </div>
+            <pre><code>const identity = {
+  role: 'Developer',
+  passion: 'Design',
+  build: 'Experiences'
+};</code></pre>
           </div>
-          <div class="img-overlay-badge badge-top">
-            <i class="fa-solid fa-trophy"></i>
-            <div>
-              <span class="badge-val">4th Place</span>
-              <span class="badge-sub">HackNexus 2.0</span>
+
+          <!-- Project Preview -->
+          <div class="float-card proj-preview premium-card" data-float="2">
+            <div class="fp-img"><i class="fa-solid fa-stethoscope"></i></div>
+            <div class="fp-info">
+              <h4>AI Triage Pro</h4>
+              <span>Python, Flask, AI</span>
             </div>
           </div>
-          <div class="img-overlay-badge badge-bottom">
-            <i class="fa-solid fa-circle-dot" style="color:#4ade80;font-size:0.6rem;"></i>
-            <div>
-              <span class="badge-val">Open to Work</span>
-              <span class="badge-sub">Jaipur, India</span>
-            </div>
+
+          <!-- Nazrithm Badge -->
+          <div class="float-card naz-badge premium-card" data-float="3">
+            <i class="fa-solid fa-cube"></i>
+            <span>Also building <strong>@nazrithm</strong><br>Creative Studio</span>
           </div>
         </div>
       </div>
@@ -178,54 +172,44 @@
   <!-- ═══════════════ ABOUT ═══════════════ -->
   <section id="about">
     <div class="container about-grid">
-      <div class="about-img-col reveal">
-        <div class="about-img-frame">
-          <img src="images/ss.png" alt="Veer at work"
-            onerror="this.style.display='none';document.getElementById('about-fallback').style.display='flex';" />
-          <div id="about-fallback" class="img-fallback">
-            <i class="fa-solid fa-image"></i>
-            <span>ss.png</span>
-          </div>
-        </div>
-        <div class="about-tag-stack">
-          <div class="about-float-tag t1"><i class="fa-solid fa-code"></i> Developer</div>
-          <div class="about-float-tag t2"><i class="fa-solid fa-camera"></i> Photographer</div>
-          <div class="about-float-tag t3"><i class="fa-solid fa-pen-nib"></i> Designer</div>
+      <div class="about-text-col reveal">
+        <p class="section-label">Who I Am</p>
+        <h2 class="section-title">Building at the<br><em>intersection of art<br>& engineering</em></h2>
+        <div class="about-body">
+          <p>I'm <strong>Veer Pratap Singh</strong> — a B.Tech Computer Science student at Arya College of Engineering,
+            Jaipur. I blend engineering precision with creative vision to build things that actually feel good.</p>
+          <p>My work spans from developing intelligent <strong>AI systems</strong> to crafting premium brand identities.
+            I believe the best digital products are engineered with precision and designed with soul.</p>
+          <p>Currently building <strong>@nazrithm</strong> (Creative Studio) and founded <strong>Lustréva</strong>
+            (Premium Gifting) — because building brands and real-world impact is the end goal.</p>
         </div>
       </div>
 
-      <div class="about-text-col">
-        <p class="section-label reveal">Who I Am</p>
-        <h2 class="section-title reveal">Building at the<br><em>intersection of art<br>& engineering</em></h2>
-        <div class="about-body reveal">
-          <p>I'm <strong>Veer Pratap Singh</strong> — a B.Tech CS student at Arya College of Engineering, graduating
-            2028. I blend engineering precision with creative vision to build things that actually feel good.</p>
-          <p>My work spans award-winning <strong>AI systems</strong> to premium brand identities. I believe the best
-            digital products are engineered with precision and designed with soul.</p>
-          <p>Founder of <strong>Lustréva</strong> (gifting brand) and <strong>Nazrithm</strong> (creative studio) —
-            because building brands, not just projects, is the real play.</p>
+      <div class="about-cards-col reveal">
+        <div class="about-highlight-card premium-card">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>CSE Student</span>
         </div>
-        <div class="about-stats reveal">
-          <div class="stat-pill">
-            <span class="stat-num" data-target="8">0</span><sup>+</sup>
-            <span class="stat-label">Projects</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num" data-target="9">0</span>
-            <span class="stat-label">Certs</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num" data-target="2">0</span>
-            <span class="stat-label">Internships</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num" data-target="4">0</span><sup>th</sup>
-            <span class="stat-label">Hackathon</span>
-          </div>
+        <div class="about-highlight-card premium-card">
+          <i class="fa-solid fa-code"></i>
+          <span>Front-End Dev</span>
         </div>
-        <a href="https://xyresiiic.github.io/Portfolio/" target="_blank" class="btn-primary reveal">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> View Full Portfolio
-        </a>
+        <div class="about-highlight-card premium-card">
+          <i class="fa-solid fa-camera"></i>
+          <span>Photographer</span>
+        </div>
+        <div class="about-highlight-card premium-card">
+          <i class="fa-solid fa-cube"></i>
+          <span>Also building @nazrithm — Creative Studio</span>
+        </div>
+        <div class="about-highlight-card premium-card">
+          <i class="fa-solid fa-brain"></i>
+          <span>AI & Web Projects</span>
+        </div>
+        <div class="about-highlight-card premium-card">
+          <i class="fa-solid fa-pen-nib"></i>
+          <span>Creative Design</span>
+        </div>
       </div>
     </div>
   </section>
@@ -237,7 +221,7 @@
       <h2 class="section-title reveal">What I <em>Bring</em></h2>
       <div class="skills-grid">
 
-        <div class="skill-card reveal" data-color="violet">
+        <div class="skill-card premium-card reveal" data-color="violet">
           <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
           <h3>Programming</h3>
           <div class="skill-tags">
@@ -245,7 +229,7 @@
           </div>
         </div>
 
-        <div class="skill-card reveal" data-color="cyan">
+        <div class="skill-card premium-card reveal" data-color="cyan">
           <div class="skill-icon-wrap"><i class="fa-solid fa-globe"></i></div>
           <h3>Frontend Dev</h3>
           <div class="skill-tags">
@@ -253,7 +237,7 @@
           </div>
         </div>
 
-        <div class="skill-card reveal" data-color="coral">
+        <div class="skill-card premium-card reveal" data-color="coral">
           <div class="skill-icon-wrap"><i class="fa-solid fa-robot"></i></div>
           <h3>AI / ML</h3>
           <div class="skill-tags">
@@ -261,7 +245,7 @@
           </div>
         </div>
 
-        <div class="skill-card reveal" data-color="lime">
+        <div class="skill-card premium-card reveal" data-color="lime">
           <div class="skill-icon-wrap"><i class="fa-solid fa-camera"></i></div>
           <h3>Photography & Video</h3>
           <div class="skill-tags">
@@ -269,7 +253,7 @@
           </div>
         </div>
 
-        <div class="skill-card reveal" data-color="amber">
+        <div class="skill-card premium-card reveal" data-color="amber">
           <div class="skill-icon-wrap"><i class="fa-solid fa-pen-nib"></i></div>
           <h3>Design & Branding</h3>
           <div class="skill-tags">
@@ -277,7 +261,7 @@
           </div>
         </div>
 
-        <div class="skill-card reveal" data-color="violet">
+        <div class="skill-card premium-card reveal" data-color="violet">
           <div class="skill-icon-wrap"><i class="fa-brands fa-github"></i></div>
           <h3>Tools</h3>
           <div class="skill-tags">
@@ -295,74 +279,109 @@
       <p class="section-label reveal">Selected Work</p>
       <h2 class="section-title reveal">Projects That<br><em>Define Me</em></h2>
 
-      <!-- FEATURED -->
-      <div class="project-featured reveal">
-        <div class="pf-content">
-          <div class="pf-badge"><i class="fa-solid fa-trophy"></i> Featured · HackNexus 2.0 — 4th Place</div>
-          <h3 class="pf-title">AI Triage Pro</h3>
-          <p class="pf-desc">Multimodal AI emergency triage platform. Combines <strong>Whisper</strong> for call
-            transcription + <strong>CLIP Vision AI</strong> for injury image analysis + <strong>Librosa</strong> audio
-            processing, fused through a weighted trust-scoring engine for real-time ambulance dispatch recommendation.
-          </p>
-          <div class="pf-stack">
-            <span>Python</span><span>Flask</span><span>Whisper
-              AI</span><span>CLIP</span><span>Librosa</span><span>Transformers</span>
+      <div class="projects-featured-list">
+        <!-- FEATURED 1: AI Triage Pro -->
+        <div class="project-featured premium-card reveal">
+          <div class="pf-content">
+            <div class="pf-badge"><i class="fa-solid fa-trophy"></i> Featured · HackNexus 2.0 — 4th Place</div>
+            <h3 class="pf-title">AI Triage Pro</h3>
+            <p class="pf-desc">Multimodal AI emergency triage platform. Combines <strong>Whisper</strong> for call
+              transcription + <strong>CLIP Vision AI</strong> for injury image analysis + <strong>Librosa</strong> audio
+              processing, fused through a weighted trust-scoring engine for real-time ambulance dispatch recommendation.
+            </p>
+            <div class="pf-stack">
+              <span>Python</span><span>Flask</span><span>Whisper
+                AI</span><span>CLIP</span><span>Librosa</span><span>Transformers</span>
+            </div>
+            <div class="pf-links">
+              <a href="https://github.com/xyresiiic/AI-TRIAGE-PRO-Project-" target="_blank" class="btn-primary">
+                <i class="fa-brands fa-github"></i> Case Study
+              </a>
+            </div>
           </div>
-          <div class="pf-links">
-            <a href="https://github.com/xyresiiic/AI-TRIAGE-PRO-Project-" target="_blank" class="btn-primary">
-              <i class="fa-brands fa-github"></i> View on GitHub
-            </a>
+          <div class="pf-visual">
+            <div class="pf-img-wrap">
+              <img src="images/proj_triage.png" alt="AI Triage Pro Platform">
+            </div>
           </div>
         </div>
-        <div class="pf-visual">
-          <div class="pf-img-wrap">
-            <img src="images/proj_triage.png" alt="AI Triage Pro Platform">
+
+        <!-- FEATURED 2: Lustréva -->
+        <div class="project-featured premium-card reveal">
+          <div class="pf-content">
+            <div class="pf-badge"><i class="fa-solid fa-gift"></i> Featured · Premium Gifting Brand</div>
+            <h3 class="pf-title">Lustréva</h3>
+            <p class="pf-desc">Premium gifting brand landing page — luxury editorial aesthetic, smooth animations, and
+              refined UI direction. Designed to convert with a highly polished visual identity.</p>
+            <div class="pf-stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>UI/UX</span>
+            </div>
+            <div class="pf-links">
+              <a href="https://xyresiiic.github.io/Landinge-page/" target="_blank" class="btn-primary">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Website
+              </a>
+            </div>
+          </div>
+          <div class="pf-visual">
+            <div class="pf-img-wrap">
+              <img src="images/proj_shop.png" alt="Lustréva Mockup">
+            </div>
           </div>
         </div>
+
+        <!-- FEATURED 3: Portfolio Website -->
+        <div class="project-featured premium-card reveal">
+          <div class="pf-content">
+            <div class="pf-badge"><i class="fa-solid fa-user"></i> Featured · Personal Brand</div>
+            <h3 class="pf-title">Portfolio Website</h3>
+            <p class="pf-desc">Minimal animated portfolio — clean structure, smooth transitions, and a dark futuristic
+              tech aesthetic built to impress recruiters and clients at first glance.</p>
+            <div class="pf-stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Animations</span>
+            </div>
+            <div class="pf-links">
+              <a href="https://xyresiiic.github.io/Portfolio/" target="_blank" class="btn-primary">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Website
+              </a>
+            </div>
+          </div>
+          <div class="pf-visual">
+            <div class="pf-img-wrap">
+              <img src="images/proj_tool.png" alt="Portfolio Website Mockup">
+            </div>
+          </div>
+        </div>
+
+        <!-- FEATURED 4: Content Calendar -->
+        <div class="project-featured premium-card reveal">
+          <div class="pf-content">
+            <div class="pf-badge"><i class="fa-solid fa-calendar-days"></i> Featured · Utility Tool</div>
+            <h3 class="pf-title">Content Calendar</h3>
+            <p class="pf-desc">AI-assisted smart scheduling tool for creators and brands — plan, schedule, and manage
+              content efficiently with an intuitive user interface.</p>
+            <div class="pf-stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Tooling</span>
+            </div>
+            <div class="pf-links">
+              <a href="https://xyresiiic.github.io/Content-Calandar/" target="_blank" class="btn-primary">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Tool
+              </a>
+            </div>
+          </div>
+          <div class="pf-visual">
+            <div class="pf-img-wrap">
+              <img src="images/proj_tool.png" alt="Content Calendar Mockup">
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- GRID -->
+      <!-- GRID FOR OTHER PROJECTS -->
+      <h3 class="section-title reveal" style="font-size: 2rem; margin-top: 4rem;">More <em>Projects</em></h3>
       <div class="projects-grid">
 
-        <div class="proj-card reveal" data-color="amber">
-          <div class="proj-thumb"><img src="images/proj_shop.png" alt="Lustréva Mockup"></div>
-          <div class="proj-card-top">
-            <i class="fa-solid fa-gift proj-ico"></i>
-            <div class="proj-badges">
-              <span class="pb brand">Brand</span>
-              <span class="pb live">Live</span>
-            </div>
-          </div>
-          <h3>Lustréva</h3>
-          <p>Premium gifting brand landing page — luxury editorial aesthetic, smooth animations, refined UI direction.
-          </p>
-          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
-          <div class="proj-links">
-            <a href="https://xyresiiic.github.io/Landinge-page/" target="_blank"><i
-                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-color="cyan">
-          <div class="proj-thumb"><img src="images/proj_tool.png" alt="Portfolio Website Mockup"></div>
-          <div class="proj-card-top">
-            <i class="fa-solid fa-user proj-ico"></i>
-            <div class="proj-badges">
-              <span class="pb portfolio">Portfolio</span>
-              <span class="pb live">Live</span>
-            </div>
-          </div>
-          <h3>Portfolio Website</h3>
-          <p>Minimal animated portfolio — clean structure, smooth transitions, built to impress recruiters at first
-            glance.</p>
-          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
-          <div class="proj-links">
-            <a href="https://xyresiiic.github.io/Portfolio/" target="_blank"><i
-                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-color="violet">
+        <div class="proj-card premium-card reveal" data-color="violet">
           <div class="proj-thumb"><img src="images/proj_med.png" alt="Medic Soul Mockup"></div>
           <div class="proj-card-top">
             <i class="fa-solid fa-stethoscope proj-ico"></i>
@@ -375,32 +394,15 @@
           <p>Healthcare assistant website with integrated chatbot features and clean medical interface design.</p>
           <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
           <div class="proj-links">
-            <a href="https://xyresiiic.github.io/madicSoul/" target="_blank"><i
-                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
-            <a href="https://github.com/xyresiiic" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="https://xyresiiic.github.io/madicSoul/" target="_blank" class="btn-ghost"
+              style="padding: 0.5rem 1rem; font-size: 0.7rem;"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live</a>
+            <a href="https://github.com/xyresiiic" target="_blank" class="btn-ghost"
+              style="padding: 0.5rem 1rem; font-size: 0.7rem;"><i class="fa-brands fa-github"></i> Code</a>
           </div>
         </div>
 
-        <div class="proj-card reveal" data-color="lime">
-          <div class="proj-thumb"><img src="images/proj_tool.png" alt="Content Calendar Mockup"></div>
-          <div class="proj-card-top">
-            <i class="fa-solid fa-calendar-days proj-ico"></i>
-            <div class="proj-badges">
-              <span class="pb tool">Tool</span>
-              <span class="pb live">Live</span>
-            </div>
-          </div>
-          <h3>Content Calendar</h3>
-          <p>AI-assisted smart scheduling tool for creators and brands — plan, schedule, and manage content efficiently.
-          </p>
-          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
-          <div class="proj-links">
-            <a href="https://xyresiiic.github.io/Content-Calandar/" target="_blank"><i
-                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-color="coral">
+        <div class="proj-card premium-card reveal" data-color="coral">
           <div class="proj-thumb"><img src="images/proj_shop.png" alt="CodSoft Projects Mockup"></div>
           <div class="proj-card-top">
             <i class="fa-solid fa-laptop-code proj-ico"></i>
@@ -412,11 +414,12 @@
           <p>Web dev internship deliverables — Calculator, To-Do List, Number Guessing Game. Clean UI, solid logic.</p>
           <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
           <div class="proj-links">
-            <a href="https://github.com/xyresiiic/CODSOFT" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="https://github.com/xyresiiic/CODSOFT" target="_blank" class="btn-ghost"
+              style="padding: 0.5rem 1rem; font-size: 0.7rem;"><i class="fa-brands fa-github"></i> Code</a>
           </div>
         </div>
 
-        <div class="proj-card reveal" data-color="amber">
+        <div class="proj-card premium-card reveal" data-color="amber">
           <div class="proj-thumb"><img src="images/proj_tool.png" alt="Basic Calculator Mockup"></div>
           <div class="proj-card-top">
             <i class="fa-solid fa-calculator proj-ico"></i>
@@ -430,8 +433,71 @@
           </p>
           <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
           <div class="proj-links">
-            <a href="https://xyresiiic.github.io/Basic_calculator/" target="_blank"><i
-                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="https://xyresiiic.github.io/Basic_calculator/" target="_blank" class="btn-ghost"
+              style="padding: 0.5rem 1rem; font-size: 0.7rem;"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CREATIVE WORK ═══════════════ -->
+  <section id="creative">
+    <div class="container">
+      <p class="section-label reveal">Visual Storytelling</p>
+      <h2 class="section-title reveal">My <em>Creative Side</em></h2>
+      <div class="creative-filters reveal">
+        <button class="c-filter active" data-filter="all">All</button>
+        <button class="c-filter" data-filter="video">Reels</button>
+        <button class="c-filter" data-filter="photo">Photography</button>
+        <button class="c-filter" data-filter="design">Brand Identity</button>
+      </div>
+
+      <div class="creative-grid">
+
+        <!-- Reel/Video Card -->
+        <div class="creative-card premium-card reveal" data-category="video">
+          <div class="creative-visual">
+            <img src="images/hero_creative.png" alt="Video Editing Reel"
+              onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800'">
+            <div class="creative-overlay">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+          <div class="creative-info">
+            <span class="creative-tag">Video Editing</span>
+            <h3>Cinematic Storytelling</h3>
+            <p>High-energy edits, color grading, and dynamic transitions for brands and personal projects.</p>
+          </div>
+        </div>
+
+        <!-- Photography Card -->
+        <div class="creative-card premium-card reveal" data-category="photo">
+          <div class="creative-visual">
+            <img src="images/creative_1.png" alt="Photography Portrait"
+              onerror="this.src='https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800'">
+          </div>
+          <div class="creative-info">
+            <span class="creative-tag">Photography</span>
+            <h3>Portrait & Street</h3>
+            <p>Capturing raw emotion, neon-lit cyberpunk aesthetics, and compelling compositions.</p>
+          </div>
+        </div>
+
+        <!-- Design Card -->
+        <div class="creative-card premium-card reveal" data-category="design">
+          <div class="creative-visual">
+            <img src="images/creative_2.png" alt="Brand Design"
+              onerror="this.src='https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800'">
+          </div>
+          <div class="creative-info">
+            <span class="creative-tag">Graphic Design</span>
+            <h3>@nazrithm Identity</h3>
+            <p>Building premium brand assets, modern typography, and cohesive visual identities for
+              <strong>@nazrithm</strong> — Creative Studio.
+            </p>
           </div>
         </div>
 
@@ -448,7 +514,7 @@
 
         <div class="tl-item reveal" data-color="violet">
           <div class="tl-dot"><i class="fa-solid fa-trophy"></i></div>
-          <div class="tl-card">
+          <div class="tl-card premium-card">
             <span class="tl-date">2024</span>
             <h3 class="tl-role">4th Place — HackNexus 2.0</h3>
             <p class="tl-org"><i class="fa-solid fa-location-dot"></i> HackNexus Hackathon</p>
@@ -460,7 +526,7 @@
 
         <div class="tl-item reveal" data-color="cyan">
           <div class="tl-dot"><i class="fa-solid fa-briefcase"></i></div>
-          <div class="tl-card">
+          <div class="tl-card premium-card">
             <span class="tl-date">2024</span>
             <h3 class="tl-role">Web Development Intern</h3>
             <p class="tl-org"><i class="fa-solid fa-building"></i> CodSoft</p>
@@ -472,7 +538,7 @@
 
         <div class="tl-item reveal" data-color="coral">
           <div class="tl-dot"><i class="fa-solid fa-code"></i></div>
-          <div class="tl-card">
+          <div class="tl-card premium-card">
             <span class="tl-date">2024</span>
             <h3 class="tl-role">C++ Programming Intern</h3>
             <p class="tl-org"><i class="fa-solid fa-building"></i> CodeAlpha</p>
@@ -484,7 +550,7 @@
 
         <div class="tl-item reveal" data-color="lime">
           <div class="tl-dot"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div class="tl-card">
+          <div class="tl-card premium-card">
             <span class="tl-date">2022 — Present</span>
             <h3 class="tl-role">B.Tech Computer Science</h3>
             <p class="tl-org"><i class="fa-solid fa-university"></i> Arya College of Engineering · RTU</p>
@@ -503,40 +569,51 @@
     <div class="container">
       <p class="section-label reveal">Credentials</p>
       <h2 class="section-title reveal">Certifications &<br><em>Recognition</em></h2>
-      <div class="certs-grid">
-        <div class="cert-card reveal"><span class="cert-icon violet"><i class="fa-solid fa-microchip"></i></span>
+      <div class="certs-nav reveal">
+        <button id="certPrev" class="cert-nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="certNext" class="cert-nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div class="certs-grid" id="certsGrid">
+        <div class="cert-card premium-card reveal"><span class="cert-icon violet"><i
+              class="fa-solid fa-microchip"></i></span>
           <p class="cert-name">Basics of Quadcopter</p>
           <p class="cert-org">IIT Roorkee</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon cyan"><i class="fa-solid fa-link"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon cyan"><i class="fa-solid fa-link"></i></span>
           <p class="cert-name">Blockchain Technology</p>
           <p class="cert-org">IIT Roorkee</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon amber"><i class="fa-solid fa-laptop-code"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon amber"><i
+              class="fa-solid fa-laptop-code"></i></span>
           <p class="cert-name">Web Dev Fundamentals</p>
           <p class="cert-org">IBM</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon coral"><i class="fa-solid fa-building"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon coral"><i
+              class="fa-solid fa-building"></i></span>
           <p class="cert-name">Virtual Tech Internship</p>
           <p class="cert-org">Deloitte / Forage</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon lime"><i class="fa-solid fa-diagram-project"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon lime"><i
+              class="fa-solid fa-diagram-project"></i></span>
           <p class="cert-name">Software Eng. Sim.</p>
           <p class="cert-org">Accenture</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon violet"><i class="fa-brands fa-aws"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon violet"><i
+              class="fa-brands fa-aws"></i></span>
           <p class="cert-name">Solution Architecture</p>
           <p class="cert-org">AWS</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon cyan"><i class="fa-solid fa-chart-bar"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon cyan"><i
+              class="fa-solid fa-chart-bar"></i></span>
           <p class="cert-name">GenAI Data Analytics</p>
           <p class="cert-org">Tata</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon amber"><i class="fa-solid fa-laptop"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon amber"><i
+              class="fa-solid fa-laptop"></i></span>
           <p class="cert-name">Web Dev Internship</p>
           <p class="cert-org">CodSoft</p>
         </div>
-        <div class="cert-card reveal"><span class="cert-icon coral"><i class="fa-solid fa-c"></i></span>
+        <div class="cert-card premium-card reveal"><span class="cert-icon coral"><i class="fa-solid fa-c"></i></span>
           <p class="cert-name">C++ Internship</p>
           <p class="cert-org">CodeAlpha</p>
         </div>
@@ -544,10 +621,94 @@
     </div>
   </section>
 
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section id="contact">
+    <div class="container contact-grid">
+
+      <div class="contact-left reveal">
+        <p class="section-label">Let's Connect</p>
+        <h2 class="section-title">Got a Project<br><em>in Mind?</em></h2>
+        <p class="contact-text">I'm open to exciting collaborations, freelance work, internships, or just a great
+          conversation about design and tech.</p>
+
+        <div class="contact-links">
+          <a href="mailto:xyresiiic@gmail.com" class="contact-link premium-card">
+            <span class="cl-icon violet"><i class="fa-solid fa-envelope"></i></span>
+            <div>
+              <span class="cl-label">Email</span>
+              <span class="cl-val">xyresiiic@gmail.com</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://github.com/xyresiiic" target="_blank" class="contact-link premium-card">
+            <span class="cl-icon cyan"><i class="fa-brands fa-github"></i></span>
+            <div>
+              <span class="cl-label">GitHub</span>
+              <span class="cl-val">github.com/xyresiiic</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://linkedin.com/in/veer-pratap-singh-77702b316" target="_blank"
+            class="contact-link premium-card">
+            <span class="cl-icon amber"><i class="fa-brands fa-linkedin-in"></i></span>
+            <div>
+              <span class="cl-label">LinkedIn</span>
+              <span class="cl-val">veer-pratap-singh</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://instagram.com/ivee.rrr" target="_blank" class="contact-link premium-card">
+            <span class="cl-icon coral"><i class="fa-brands fa-instagram"></i></span>
+            <div>
+              <span class="cl-label">Instagram</span>
+              <span class="cl-val">@ivee.rrr</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://instagram.com/nazrithm" target="_blank" class="contact-link premium-card">
+            <span class="cl-icon cyan"><i class="fa-solid fa-cube"></i></span>
+            <div>
+              <span class="cl-label">Also building</span>
+              <span class="cl-val">@nazrithm — Creative Studio</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-right reveal">
+        <form onsubmit="event.preventDefault(); handleContact();" class="contact-form-card premium-card">
+          <h3 class="form-title">Send a Message</h3>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" id="subject" placeholder="Project / Collaboration / Other" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="4" placeholder="Tell me about your idea..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          <p id="form-feedback"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ GAME ═══════════════ -->
-  <section id="game">
+  <section id="game" style="padding-top: 2rem;">
     <div class="container">
-      <p class="section-label reveal" style="justify-content:center;">Mini Game</p>
+      <p class="section-label reveal" style="justify-content:center;">Easter Egg</p>
       <h2 class="section-title reveal" style="text-align:center;">Take a <em>Break</em>,<br>Beat My Score</h2>
       <p class="game-intro reveal">Dodge the bugs. Catch the stars. Just like a dev surviving sprint week — power-ups
         included.</p>
@@ -582,80 +743,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════ CONTACT ═══════════════ -->
-  <section id="contact">
-    <div class="container contact-grid">
-
-      <div class="contact-left reveal">
-        <p class="section-label">Let's Connect</p>
-        <h2 class="section-title">Got a Project<br><em>in Mind?</em></h2>
-        <p class="contact-text">I'm open to exciting collaborations, freelance work, internships, or just a great
-          conversation about design and tech.</p>
-
-        <div class="contact-links">
-          <a href="mailto:xyresiiic@gmail.com" class="contact-link">
-            <span class="cl-icon violet"><i class="fa-solid fa-envelope"></i></span>
-            <div>
-              <span class="cl-label">Email</span>
-              <span class="cl-val">xyresiiic@gmail.com</span>
-            </div>
-            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
-          </a>
-          <a href="https://github.com/xyresiiic" target="_blank" class="contact-link">
-            <span class="cl-icon cyan"><i class="fa-brands fa-github"></i></span>
-            <div>
-              <span class="cl-label">GitHub</span>
-              <span class="cl-val">github.com/xyresiiic</span>
-            </div>
-            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
-          </a>
-          <a href="https://linkedin.com/in/veer-pratap-singh-77702b316" target="_blank" class="contact-link">
-            <span class="cl-icon amber"><i class="fa-brands fa-linkedin-in"></i></span>
-            <div>
-              <span class="cl-label">LinkedIn</span>
-              <span class="cl-val">veer-pratap-singh</span>
-            </div>
-            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
-          </a>
-          <a href="https://instagram.com/ivee.rrr" target="_blank" class="contact-link">
-            <span class="cl-icon coral"><i class="fa-brands fa-instagram"></i></span>
-            <div>
-              <span class="cl-label">Instagram</span>
-              <span class="cl-val">@ivee.rrr</span>
-            </div>
-            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="contact-right reveal">
-        <div class="contact-form-card">
-          <h3 class="form-title">Send a Message</h3>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="your@email.com" />
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" placeholder="Project / Collaboration / Other" />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="4" placeholder="Tell me about your idea..."></textarea>
-          </div>
-          <button class="btn-primary full-width" onclick="handleContact()">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
-          </button>
-          <p id="form-feedback"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer>
     <div class="footer-inner container">
@@ -664,8 +751,11 @@
         <span class="footer-motto">Code. Click. Create.</span>
       </div>
       <div class="footer-center">
-        <p>Built with <i class="fa-solid fa-heart" style="color:#f87171;"></i> by Veer Pratap Singh</p>
-        <p style="font-size:0.75rem; opacity:0.4; margin-top:4px;">© 2024 — All rights reserved</p>
+        <p>Built with <i class="fa-solid fa-heart" style="color:var(--coral);"></i> by Veer Pratap Singh</p>
+        <p class="footer-naz">Founder of <i class="fa-solid fa-cube" style="color:var(--cyan);"></i>
+          <strong>@nazrithm</strong>
+        </p>
+        <p class="footer-copy">© 2024 — All rights reserved</p>
       </div>
       <div class="footer-right">
         <a href="https://github.com/xyresiiic" target="_blank"><i class="fa-brands fa-github"></i></a>

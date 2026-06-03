@@ -22,18 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. CUSTOM CURSOR
   const cursor = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursor-ring');
-  
+
   document.addEventListener('mousemove', (e) => {
-    if(cursor) cursor.style.transform = `translate(${e.clientX - 5}px, ${e.clientY - 5}px)`;
-    
+    if (cursor) cursor.style.transform = `translate(${e.clientX - 5}px, ${e.clientY - 5}px)`;
+
     // Smooth ring follow
     requestAnimationFrame(() => {
-      if(cursorRing) cursorRing.style.transform = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
+      if (cursorRing) cursorRing.style.transform = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
     });
   });
 
   // Cursor hover state
-  const interactiveElements = document.querySelectorAll('a, button, input, textarea, .proj-card, .skill-card, .cert-card, .tl-card');
+  const interactiveElements = document.querySelectorAll('a, button, input, textarea, .premium-card, .creative-card, .hero-card');
   interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -43,17 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      if(navbar) navbar.classList.add('scrolled');
+      if (navbar) navbar.classList.add('scrolled');
     } else {
-      if(navbar) navbar.classList.remove('scrolled');
+      if (navbar) navbar.classList.remove('scrolled');
     }
   });
 
   // 4. MOBILE NAV
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
-  
-  if(hamburger && mobileNav) {
+
+  if (hamburger && mobileNav) {
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       mobileNav.classList.toggle('open');
@@ -61,17 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.closeMobileNav = () => {
-    if(hamburger) hamburger.classList.remove('active');
-    if(mobileNav) mobileNav.classList.remove('open');
+    if (hamburger) hamburger.classList.remove('active');
+    if (mobileNav) mobileNav.classList.remove('open');
   };
 
   // 5. TYPED EFFECT
   const typedSpan = document.getElementById('typed');
-  if(typedSpan) {
+  if (typedSpan) {
     const textArray = ["Web Developer", "UI/UX Designer", "AI Enthusiast", "Creative Thinker"];
     const typingDelay = 100;
     const erasingDelay = 50;
-    const newTextDelay = 2000; 
+    const newTextDelay = 2000;
     let textArrayIndex = 0;
     let charIndex = 0;
 
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const duration = 2000;
         const step = Math.max(1, target / (duration / 16));
         let current = 0;
-        
+
         const updateCounter = () => {
           current += step;
           if (current < target) {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             entry.target.textContent = target;
           }
         };
-        
+
         updateCounter();
         observer.unobserve(entry.target);
       }
@@ -178,48 +178,96 @@ document.addEventListener('DOMContentLoaded', () => {
         message: message
       })
     })
-    .then(async (response) => {
-      let json = await response.json();
-      if (response.status == 200) {
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('subject').value = '';
-        document.getElementById('message').value = '';
-        
-        feedback.textContent = "Message sent successfully! I'll get back to you soon.";
-        feedback.style.color = "var(--lime)";
-      } else {
-        feedback.textContent = json.message || "Something went wrong!";
-        feedback.style.color = "var(--coral)";
-      }
-    })
-    .catch(error => {
-      feedback.textContent = "Network error. Please try again later.";
-      feedback.style.color = "var(--coral)";
-    })
-    .finally(() => {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-      setTimeout(() => {
-        if(feedback.textContent.includes("successfully")) {
-            feedback.textContent = "";
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('subject').value = '';
+          document.getElementById('message').value = '';
+
+          feedback.textContent = "Message sent successfully! I'll get back to you soon.";
+          feedback.style.color = "var(--lime)";
+        } else {
+          feedback.textContent = json.message || "Something went wrong!";
+          feedback.style.color = "var(--coral)";
         }
-      }, 5000);
-    });
+      })
+      .catch(error => {
+        feedback.textContent = "Network error. Please try again later.";
+        feedback.style.color = "var(--coral)";
+      })
+      .finally(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        setTimeout(() => {
+          if (feedback.textContent.includes("successfully")) {
+            feedback.textContent = "";
+          }
+        }, 5000);
+      });
   };
 
-  // 9. MINI GAME (Dodge & Catch)
+  // 9. CREATIVE FILTERS
+  const filterBtns = document.querySelectorAll('.c-filter');
+  const creativeCards = document.querySelectorAll('.creative-card');
+
+  if (filterBtns.length > 0 && creativeCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active to clicked
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        creativeCards.forEach(card => {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  // 10. CERTIFICATES CAROUSEL
+  const certsGrid = document.getElementById('certsGrid');
+  const certPrev = document.getElementById('certPrev');
+  const certNext = document.getElementById('certNext');
+
+  if (certsGrid && certPrev && certNext) {
+    const scrollAmount = 300;
+    certPrev.addEventListener('click', () => {
+      certsGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    certNext.addEventListener('click', () => {
+      certsGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+
+  // 11. MINI GAME (Dodge & Catch)
   const canvas = document.getElementById('gameCanvas');
-  if(canvas) {
+  if (canvas) {
     const ctx = canvas.getContext('2d');
-    
+
     let gameLoop;
     let gameActive = false;
     let score = 0;
     let bestScore = localStorage.getItem('vps_game_best') || 0;
     let level = 1;
     let lives = 3;
-    
+
     document.getElementById('bestDisplay').textContent = bestScore;
 
     // Game Objects
@@ -237,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('keydown', (e) => {
       if (keys.hasOwnProperty(e.key)) {
-        if(['ArrowLeft', 'ArrowRight'].includes(e.key)) e.preventDefault(); // prevent scroll
+        if (['ArrowLeft', 'ArrowRight'].includes(e.key)) e.preventDefault(); // prevent scroll
         keys[e.key] = true;
       }
     });
@@ -301,25 +349,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver() {
       gameActive = false;
       cancelAnimationFrame(gameLoop);
-      
+
       if (score > bestScore) {
         bestScore = score;
         localStorage.setItem('vps_game_best', bestScore);
         document.getElementById('bestDisplay').textContent = bestScore;
       }
-      
+
       ctx.fillStyle = 'rgba(7, 8, 15, 0.8)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
+
       ctx.fillStyle = '#f1f0f8';
       ctx.font = 'bold 36px Syne, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('GAME OVER', canvas.width/2, canvas.height/2 - 20);
-      
+      ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
+
       ctx.font = '20px Syne, sans-serif';
       ctx.fillStyle = '#8b5cf6';
-      ctx.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 20);
-      
+      ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height / 2 + 20);
+
       document.getElementById('game-start-btn').innerHTML = '<i class="fa-solid fa-rotate-right"></i> Play Again';
       document.getElementById('game-start-btn').style.display = 'inline-flex';
     }
@@ -354,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (checkCollision(player, stars[i])) {
           score += 10;
           stars.splice(i, 1);
-          
+
           // Level up
           if (score > 0 && score % 100 === 0) {
             level++;
@@ -379,10 +427,10 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             lives--;
             updateGameInfo();
-            
+
             // Flash effect
             ctx.fillStyle = 'rgba(251, 113, 133, 0.3)';
-            ctx.fillRect(0,0, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             if (lives <= 0) {
               gameOver();
@@ -410,13 +458,13 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.textAlign = 'left';
       update();
     };
-    
+
     // Initial canvas setup
     ctx.fillStyle = 'rgba(7, 8, 15, 0.5)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#9490b4';
     ctx.font = '16px JetBrains Mono, monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('Press Start to Play', canvas.width/2, canvas.height/2);
+    ctx.fillText('Press Start to Play', canvas.width / 2, canvas.height / 2);
   }
 });
