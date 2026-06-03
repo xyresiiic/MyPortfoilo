@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veer Pratap Singh — Code. Click. Create.</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-inner">
+      <span class="loader-name">VS</span>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
+      </div>
+      <span class="loader-text">Loading portfolio...</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>VS<span class="logo-bracket">/&gt;</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#experience">Timeline</a></li>
+      <li><a href="#game">Play</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:xyresiiic@gmail.com" class="nav-cta">Hire Me <i class="fa-solid fa-arrow-up-right"></i></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+      <li><a href="#skills" onclick="closeMobileNav()">Skills</a></li>
+      <li><a href="#projects" onclick="closeMobileNav()">Work</a></li>
+      <li><a href="#experience" onclick="closeMobileNav()">Timeline</a></li>
+      <li><a href="#game" onclick="closeMobileNav()">Play</a></li>
+      <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="hero">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-grid container">
+      <div class="hero-left">
+        <p class="hero-eyebrow reveal">
+          <i class="fa-solid fa-circle-dot pulse-dot"></i>
+          B.Tech · Arya College · Jaipur
+        </p>
+        <h1 class="hero-name reveal">
+          Veer<br>
+          Pratap<br>
+          <em>Singh.</em>
+        </h1>
+        <p class="hero-typed-line reveal">
+          <span class="mono-bracket">&lt;</span>
+          <span id="typed" class="typed-text"></span>
+          <span class="mono-bracket"> /&gt;</span>
+        </p>
+        <p class="hero-desc reveal">
+          Developer · Designer · Visual Storyteller.<br>
+          I craft digital experiences where <strong>technology meets aesthetics</strong> — clean code, compelling
+          design, real impact.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#projects" class="btn-primary">
+            <i class="fa-solid fa-eye"></i> View Work
+          </a>
+          <a href="https://github.com/xyresiiic" target="_blank" class="btn-ghost">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+        <div class="hero-socials reveal">
+          <a href="https://github.com/xyresiiic" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/veer-pratap-singh-77702b316" target="_blank" title="LinkedIn"><i
+              class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://instagram.com/ivee.rrr" target="_blank" title="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="mailto:xyresiiic@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-img-frame">
+          <div class="frame-corner tl"></div>
+          <div class="frame-corner tr"></div>
+          <div class="frame-corner bl"></div>
+          <div class="frame-corner br"></div>
+          <img src="images/DP.png" alt="Veer Pratap Singh"
+            onerror="this.style.display='none';document.getElementById('img-fallback').style.display='flex';" />
+          <div id="img-fallback" class="img-fallback">
+            <i class="fa-solid fa-user"></i>
+            <span>DP.png</span>
+          </div>
+          <div class="img-overlay-badge badge-top">
+            <i class="fa-solid fa-trophy"></i>
+            <div>
+              <span class="badge-val">4th Place</span>
+              <span class="badge-sub">HackNexus 2.0</span>
+            </div>
+          </div>
+          <div class="img-overlay-badge badge-bottom">
+            <i class="fa-solid fa-circle-dot" style="color:#4ade80;font-size:0.6rem;"></i>
+            <div>
+              <span class="badge-val">Open to Work</span>
+              <span class="badge-sub">Jaipur, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MARQUEE ═══════════════ -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="mq-item">C++</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Web Development</span><span class="mq-sep">✦</span>
+      <span class="mq-item">AI / ML</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Photography</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Graphic Design</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Flask</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Brand Strategy</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Video Editing</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Visual Storytelling</span><span class="mq-sep">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span class="mq-item">C++</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Web Development</span><span class="mq-sep">✦</span>
+      <span class="mq-item">AI / ML</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Photography</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Graphic Design</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Flask</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Brand Strategy</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Video Editing</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Visual Storytelling</span><span class="mq-sep">✦</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-img-col reveal">
+        <div class="about-img-frame">
+          <img src="images/ss.png" alt="Veer at work"
+            onerror="this.style.display='none';document.getElementById('about-fallback').style.display='flex';" />
+          <div id="about-fallback" class="img-fallback">
+            <i class="fa-solid fa-image"></i>
+            <span>ss.png</span>
+          </div>
+        </div>
+        <div class="about-tag-stack">
+          <div class="about-float-tag t1"><i class="fa-solid fa-code"></i> Developer</div>
+          <div class="about-float-tag t2"><i class="fa-solid fa-camera"></i> Photographer</div>
+          <div class="about-float-tag t3"><i class="fa-solid fa-pen-nib"></i> Designer</div>
+        </div>
+      </div>
+
+      <div class="about-text-col">
+        <p class="section-label reveal">Who I Am</p>
+        <h2 class="section-title reveal">Building at the<br><em>intersection of art<br>& engineering</em></h2>
+        <div class="about-body reveal">
+          <p>I'm <strong>Veer Pratap Singh</strong> — a B.Tech CS student at Arya College of Engineering, graduating
+            2028. I blend engineering precision with creative vision to build things that actually feel good.</p>
+          <p>My work spans award-winning <strong>AI systems</strong> to premium brand identities. I believe the best
+            digital products are engineered with precision and designed with soul.</p>
+          <p>Founder of <strong>Lustréva</strong> (gifting brand) and <strong>Nazrithm</strong> (creative studio) —
+            because building brands, not just projects, is the real play.</p>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat-pill">
+            <span class="stat-num" data-target="8">0</span><sup>+</sup>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num" data-target="9">0</span>
+            <span class="stat-label">Certs</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num" data-target="2">0</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num" data-target="4">0</span><sup>th</sup>
+            <span class="stat-label">Hackathon</span>
+          </div>
+        </div>
+        <a href="https://xyresiiic.github.io/Portfolio/" target="_blank" class="btn-primary reveal">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> View Full Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label reveal">Expertise</p>
+      <h2 class="section-title reveal">What I <em>Bring</em></h2>
+      <div class="skills-grid">
+
+        <div class="skill-card reveal" data-color="violet">
+          <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
+          <h3>Programming</h3>
+          <div class="skill-tags">
+            <span>C</span><span>C++</span><span>Java</span><span>Python</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal" data-color="cyan">
+          <div class="skill-icon-wrap"><i class="fa-solid fa-globe"></i></div>
+          <h3>Frontend Dev</h3>
+          <div class="skill-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Flask</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal" data-color="coral">
+          <div class="skill-icon-wrap"><i class="fa-solid fa-robot"></i></div>
+          <h3>AI / ML</h3>
+          <div class="skill-tags">
+            <span>Whisper</span><span>CLIP</span><span>Librosa</span><span>Transformers</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal" data-color="lime">
+          <div class="skill-icon-wrap"><i class="fa-solid fa-camera"></i></div>
+          <h3>Photography & Video</h3>
+          <div class="skill-tags">
+            <span>Photography</span><span>Videography</span><span>Lightroom</span><span>VN Editor</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal" data-color="amber">
+          <div class="skill-icon-wrap"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Design & Branding</h3>
+          <div class="skill-tags">
+            <span>Graphic Design</span><span>Photoshop</span><span>UI/UX</span><span>Brand Identity</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal" data-color="violet">
+          <div class="skill-icon-wrap"><i class="fa-brands fa-github"></i></div>
+          <h3>Tools</h3>
+          <div class="skill-tags">
+            <span>VS Code</span><span>GitHub</span><span>GitHub Pages</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label reveal">Selected Work</p>
+      <h2 class="section-title reveal">Projects That<br><em>Define Me</em></h2>
+
+      <!-- FEATURED -->
+      <div class="project-featured reveal">
+        <div class="pf-content">
+          <div class="pf-badge"><i class="fa-solid fa-trophy"></i> Featured · HackNexus 2.0 — 4th Place</div>
+          <h3 class="pf-title">AI Triage Pro</h3>
+          <p class="pf-desc">Multimodal AI emergency triage platform. Combines <strong>Whisper</strong> for call
+            transcription + <strong>CLIP Vision AI</strong> for injury image analysis + <strong>Librosa</strong> audio
+            processing, fused through a weighted trust-scoring engine for real-time ambulance dispatch recommendation.
+          </p>
+          <div class="pf-stack">
+            <span>Python</span><span>Flask</span><span>Whisper
+              AI</span><span>CLIP</span><span>Librosa</span><span>Transformers</span>
+          </div>
+          <div class="pf-links">
+            <a href="https://github.com/xyresiiic/AI-TRIAGE-PRO-Project-" target="_blank" class="btn-primary">
+              <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="pf-visual">
+          <div class="pf-icon-wrap">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div class="pf-ring r1"></div>
+            <div class="pf-ring r2"></div>
+            <div class="pf-ring r3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <div class="projects-grid">
+
+        <div class="proj-card reveal" data-color="amber">
+          <div class="proj-thumb"><img src="images/proj_shop.png" alt="Lustréva Mockup"></div>
+          <div class="proj-card-top">
+            <i class="fa-solid fa-gift proj-ico"></i>
+            <div class="proj-badges">
+              <span class="pb brand">Brand</span>
+              <span class="pb live">Live</span>
+            </div>
+          </div>
+          <h3>Lustréva</h3>
+          <p>Premium gifting brand landing page — luxury editorial aesthetic, smooth animations, refined UI direction.
+          </p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-links">
+            <a href="https://xyresiiic.github.io/Landinge-page/" target="_blank"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-color="cyan">
+          <div class="proj-thumb"><img src="images/proj_tool.png" alt="Portfolio Website Mockup"></div>
+          <div class="proj-card-top">
+            <i class="fa-solid fa-user proj-ico"></i>
+            <div class="proj-badges">
+              <span class="pb portfolio">Portfolio</span>
+              <span class="pb live">Live</span>
+            </div>
+          </div>
+          <h3>Portfolio Website</h3>
+          <p>Minimal animated portfolio — clean structure, smooth transitions, built to impress recruiters at first
+            glance.</p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-links">
+            <a href="https://xyresiiic.github.io/Portfolio/" target="_blank"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-color="violet">
+          <div class="proj-thumb"><img src="images/proj_med.png" alt="Medic Soul Mockup"></div>
+          <div class="proj-card-top">
+            <i class="fa-solid fa-stethoscope proj-ico"></i>
+            <div class="proj-badges">
+              <span class="pb ai">AI</span>
+              <span class="pb live">Live</span>
+            </div>
+          </div>
+          <h3>Medic Soul</h3>
+          <p>Healthcare assistant website with integrated chatbot features and clean medical interface design.</p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-links">
+            <a href="https://xyresiiic.github.io/madicSoul/" target="_blank"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="https://github.com/xyresiiic" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-color="lime">
+          <div class="proj-thumb"><img src="images/proj_tool.png" alt="Content Calendar Mockup"></div>
+          <div class="proj-card-top">
+            <i class="fa-solid fa-calendar-days proj-ico"></i>
+            <div class="proj-badges">
+              <span class="pb tool">Tool</span>
+              <span class="pb live">Live</span>
+            </div>
+          </div>
+          <h3>Content Calendar</h3>
+          <p>AI-assisted smart scheduling tool for creators and brands — plan, schedule, and manage content efficiently.
+          </p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-links">
+            <a href="https://xyresiiic.github.io/Content-Calandar/" target="_blank"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-color="coral">
+          <div class="proj-thumb"><img src="images/proj_shop.png" alt="CodSoft Projects Mockup"></div>
+          <div class="proj-card-top">
+            <i class="fa-solid fa-laptop-code proj-ico"></i>
+            <div class="proj-badges">
+              <span class="pb intern">Internship</span>
+            </div>
+          </div>
+          <h3>CodSoft Projects</h3>
+          <p>Web dev internship deliverables — Calculator, To-Do List, Number Guessing Game. Clean UI, solid logic.</p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/xyresiiic/CODSOFT" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-color="amber">
+          <div class="proj-thumb"><img src="images/proj_tool.png" alt="Basic Calculator Mockup"></div>
+          <div class="proj-card-top">
+            <i class="fa-solid fa-calculator proj-ico"></i>
+            <div class="proj-badges">
+              <span class="pb tool">Utility</span>
+              <span class="pb live">Live</span>
+            </div>
+          </div>
+          <h3>Basic Calculator</h3>
+          <p>Responsive arithmetic calculator with clean UI. Focused on simplicity, usability, and cross-device layout.
+          </p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-links">
+            <a href="https://xyresiiic.github.io/Basic_calculator/" target="_blank"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label reveal">Journey</p>
+      <h2 class="section-title reveal">Experience &<br><em>Education</em></h2>
+      <div class="timeline">
+
+        <div class="tl-item reveal" data-color="violet">
+          <div class="tl-dot"><i class="fa-solid fa-trophy"></i></div>
+          <div class="tl-card">
+            <span class="tl-date">2024</span>
+            <h3 class="tl-role">4th Place — HackNexus 2.0</h3>
+            <p class="tl-org"><i class="fa-solid fa-location-dot"></i> HackNexus Hackathon</p>
+            <p class="tl-desc">Built AI TRIAGE PRO — a multimodal emergency triage system combining audio and vision AI
+              for real-time severity detection and ambulance dispatch.</p>
+            <div class="tl-tags"><span>AI/ML</span><span>Python</span><span>Flask</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal" data-color="cyan">
+          <div class="tl-dot"><i class="fa-solid fa-briefcase"></i></div>
+          <div class="tl-card">
+            <span class="tl-date">2024</span>
+            <h3 class="tl-role">Web Development Intern</h3>
+            <p class="tl-org"><i class="fa-solid fa-building"></i> CodSoft</p>
+            <p class="tl-desc">Built production-ready web projects — calculator, to-do apps, and interactive games using
+              HTML, CSS, and JavaScript.</p>
+            <div class="tl-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal" data-color="coral">
+          <div class="tl-dot"><i class="fa-solid fa-code"></i></div>
+          <div class="tl-card">
+            <span class="tl-date">2024</span>
+            <h3 class="tl-role">C++ Programming Intern</h3>
+            <p class="tl-org"><i class="fa-solid fa-building"></i> CodeAlpha</p>
+            <p class="tl-desc">Worked on C++ programming challenges, strengthening core fundamentals, data structures,
+              and problem-solving capabilities.</p>
+            <div class="tl-tags"><span>C++</span><span>DSA</span><span>OOP</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal" data-color="lime">
+          <div class="tl-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="tl-card">
+            <span class="tl-date">2022 — Present</span>
+            <h3 class="tl-role">B.Tech Computer Science</h3>
+            <p class="tl-org"><i class="fa-solid fa-university"></i> Arya College of Engineering · RTU</p>
+            <p class="tl-desc">Pursuing B.Tech with deep focus on programming, AI systems, web development, and creative
+              technology. Graduating 2028.</p>
+            <div class="tl-tags"><span>CS</span><span>AI</span><span>Web Dev</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CERTIFICATIONS ═══════════════ -->
+  <section id="certs">
+    <div class="container">
+      <p class="section-label reveal">Credentials</p>
+      <h2 class="section-title reveal">Certifications &<br><em>Recognition</em></h2>
+      <div class="certs-grid">
+        <div class="cert-card reveal"><span class="cert-icon violet"><i class="fa-solid fa-microchip"></i></span>
+          <p class="cert-name">Basics of Quadcopter</p>
+          <p class="cert-org">IIT Roorkee</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon cyan"><i class="fa-solid fa-link"></i></span>
+          <p class="cert-name">Blockchain Technology</p>
+          <p class="cert-org">IIT Roorkee</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon amber"><i class="fa-brands fa-ibm"></i></span>
+          <p class="cert-name">Web Dev Fundamentals</p>
+          <p class="cert-org">IBM</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon coral"><i class="fa-solid fa-building"></i></span>
+          <p class="cert-name">Virtual Tech Internship</p>
+          <p class="cert-org">Deloitte / Forage</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon lime"><i class="fa-solid fa-diagram-project"></i></span>
+          <p class="cert-name">Software Eng. Sim.</p>
+          <p class="cert-org">Accenture</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon violet"><i class="fa-brands fa-aws"></i></span>
+          <p class="cert-name">Solution Architecture</p>
+          <p class="cert-org">AWS</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon cyan"><i class="fa-solid fa-chart-bar"></i></span>
+          <p class="cert-name">GenAI Data Analytics</p>
+          <p class="cert-org">Tata</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon amber"><i class="fa-solid fa-laptop"></i></span>
+          <p class="cert-name">Web Dev Internship</p>
+          <p class="cert-org">CodSoft</p>
+        </div>
+        <div class="cert-card reveal"><span class="cert-icon coral"><i class="fa-solid fa-c"></i></span>
+          <p class="cert-name">C++ Internship</p>
+          <p class="cert-org">CodeAlpha</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GAME ═══════════════ -->
+  <section id="game">
+    <div class="container">
+      <p class="section-label reveal" style="justify-content:center;">Mini Game</p>
+      <h2 class="section-title reveal" style="text-align:center;">Take a <em>Break</em>,<br>Beat My Score</h2>
+      <p class="game-intro reveal">Dodge the bugs. Catch the stars. Just like a dev surviving sprint week — power-ups
+        included.</p>
+
+      <div class="game-wrapper reveal">
+        <div class="game-hud">
+          <div class="hud-item">
+            <span class="hud-label">Score</span>
+            <span class="hud-val" id="scoreDisplay">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Best</span>
+            <span class="hud-val" id="bestDisplay">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Level</span>
+            <span class="hud-val" id="levelDisplay">1</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Lives</span>
+            <span class="hud-val" id="livesDisplay">❤❤❤</span>
+          </div>
+        </div>
+        <canvas id="gameCanvas" width="640" height="380"></canvas>
+        <div class="game-controls">
+          <button id="game-start-btn" onclick="startGame()">
+            <i class="fa-solid fa-play"></i> Start Game
+          </button>
+          <span class="game-hint">← → Arrow Keys or A/D to move · ★ = +10pts · ✕ = lose life · ⚡ = shield</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section id="contact">
+    <div class="container contact-grid">
+
+      <div class="contact-left reveal">
+        <p class="section-label">Let's Connect</p>
+        <h2 class="section-title">Got a Project<br><em>in Mind?</em></h2>
+        <p class="contact-text">I'm open to exciting collaborations, freelance work, internships, or just a great
+          conversation about design and tech.</p>
+
+        <div class="contact-links">
+          <a href="mailto:xyresiiic@gmail.com" class="contact-link">
+            <span class="cl-icon violet"><i class="fa-solid fa-envelope"></i></span>
+            <div>
+              <span class="cl-label">Email</span>
+              <span class="cl-val">xyresiiic@gmail.com</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://github.com/xyresiiic" target="_blank" class="contact-link">
+            <span class="cl-icon cyan"><i class="fa-brands fa-github"></i></span>
+            <div>
+              <span class="cl-label">GitHub</span>
+              <span class="cl-val">github.com/xyresiiic</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://linkedin.com/in/veer-pratap-singh-77702b316" target="_blank" class="contact-link">
+            <span class="cl-icon amber"><i class="fa-brands fa-linkedin-in"></i></span>
+            <div>
+              <span class="cl-label">LinkedIn</span>
+              <span class="cl-val">veer-pratap-singh</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+          <a href="https://instagram.com/ivee.rrr" target="_blank" class="contact-link">
+            <span class="cl-icon coral"><i class="fa-brands fa-instagram"></i></span>
+            <div>
+              <span class="cl-label">Instagram</span>
+              <span class="cl-val">@ivee.rrr</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right cl-arrow"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-right reveal">
+        <div class="contact-form-card">
+          <h3 class="form-title">Send a Message</h3>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Project / Collaboration / Other" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Tell me about your idea..."></textarea>
+          </div>
+          <button class="btn-primary full-width" onclick="handleContact()">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          <p id="form-feedback"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner container">
+      <div class="footer-left">
+        <span class="footer-logo"><span class="logo-bracket">&lt;</span>VS<span class="logo-bracket">/&gt;</span></span>
+        <span class="footer-motto">Code. Click. Create.</span>
+      </div>
+      <div class="footer-center">
+        <p>Built with <i class="fa-solid fa-heart" style="color:#f87171;"></i> by Veer Pratap Singh</p>
+        <p style="font-size:0.75rem; opacity:0.4; margin-top:4px;">© 2024 — All rights reserved</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/xyresiiic" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/veer-pratap-singh-77702b316" target="_blank"><i
+            class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/ivee.rrr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
