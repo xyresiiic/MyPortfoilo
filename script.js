@@ -1,470 +1,775 @@
-/* ═══════════════════════════════════════════════
+/* ════════════════════════════════════════════════
    VEER PRATAP SINGH — PORTFOLIO
-   script.js
-   ═══════════════════════════════════════════════ */
+   script.js · Full Redesign
+   ════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. LOADER
+  /* ════════════════════════════
+     1. LOADER
+  ════════════════════════════ */
   const loader = document.getElementById('loader');
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loader.classList.add('done');
-    }, 500);
-  });
-  // Fallback if load event already fired
-  if (document.readyState === 'complete') {
-    setTimeout(() => {
-      loader.classList.add('done');
-    }, 500);
+
+  function hideLoader() {
+    if (loader) loader.classList.add('done');
   }
 
-  // 2. CUSTOM CURSOR
+  if (document.readyState === 'complete') {
+    setTimeout(hideLoader, 500);
+  } else {
+    window.addEventListener('load', () => setTimeout(hideLoader, 500));
+    // Fallback so it doesn't get stuck if resources fail to load
+    setTimeout(hideLoader, 2000);
+  }
+
+
+  /* ════════════════════════════
+     2. CUSTOM CURSOR
+  ════════════════════════════ */
   const cursor = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursor-ring');
 
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+  let rafId;
+
   document.addEventListener('mousemove', (e) => {
-    if (cursor) cursor.style.transform = `translate(${e.clientX - 5}px, ${e.clientY - 5}px)`;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (cursor) cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  });
 
-    // Smooth ring follow
-    requestAnimationFrame(() => {
-      if (cursorRing) cursorRing.style.transform = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
+  // Smooth ring follow with lerp
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    if (cursorRing) cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+    rafId = requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Cursor hover state — add to all interactive elements
+  function bindCursorHover() {
+    const targets = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .cf-btn, .cert-nav-btn, .proj-link-btn');
+    targets.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
+  }
+  bindCursorHover();
+
+  // Cursor leaves window
+  document.addEventListener('mouseleave', () => {
+    if (cursor) cursor.style.opacity = '0';
+    if (cursorRing) cursorRing.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    if (cursor) cursor.style.opacity = '1';
+    if (cursorRing) cursorRing.style.opacity = '1';
   });
 
-  // Cursor hover state
-  const interactiveElements = document.querySelectorAll('a, button, input, textarea, .premium-card, .creative-card, .hero-card');
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-  });
 
-  // 3. NAVBAR SCROLL
+  /* ════════════════════════════
+     3. NAVBAR — Scroll & Active
+  ════════════════════════════ */
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      if (navbar) navbar.classList.add('scrolled');
-    } else {
-      if (navbar) navbar.classList.remove('scrolled');
-    }
-  });
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
 
-  // 4. MOBILE NAV
+  window.addEventListener('scroll', () => {
+    // Scrolled state
+    if (window.scrollY > 60) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+
+    // Active nav link highlighting
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      if (window.scrollY >= top) {
+        current = sec.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  }, { passive: true });
+
+
+  /* ════════════════════════════
+     4. MOBILE NAV
+  ════════════════════════════ */
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
 
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('open');
-    });
+  function openMobileNav() {
+    hamburger?.classList.add('active');
+    mobileNav?.classList.add('open');
+    mobileNav?.setAttribute('aria-hidden', 'false');
+    if (mobileNavBackdrop) mobileNavBackdrop.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    hamburger?.setAttribute('aria-expanded', 'true');
   }
 
-  window.closeMobileNav = () => {
-    if (hamburger) hamburger.classList.remove('active');
-    if (mobileNav) mobileNav.classList.remove('open');
+  window.closeMobileNav = function () {
+    hamburger?.classList.remove('active');
+    mobileNav?.classList.remove('open');
+    mobileNav?.setAttribute('aria-hidden', 'true');
+    if (mobileNavBackdrop) mobileNavBackdrop.style.display = 'none';
+    document.body.style.overflow = '';
+    hamburger?.setAttribute('aria-expanded', 'false');
   };
 
-  // 5. TYPED EFFECT
-  const typedSpan = document.getElementById('typed');
-  if (typedSpan) {
-    const textArray = ["Web Developer", "UI/UX Designer", "AI Enthusiast", "Creative Thinker"];
-    const typingDelay = 100;
-    const erasingDelay = 50;
-    const newTextDelay = 2000;
-    let textArrayIndex = 0;
-    let charIndex = 0;
-
-    function type() {
-      if (charIndex < textArray[textArrayIndex].length) {
-        typedSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(type, typingDelay);
-      } else {
-        setTimeout(erase, newTextDelay);
-      }
+  hamburger?.addEventListener('click', () => {
+    if (mobileNav?.classList.contains('open')) {
+      window.closeMobileNav();
+    } else {
+      openMobileNav();
     }
-
-    function erase() {
-      if (charIndex > 0) {
-        typedSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(erase, erasingDelay);
-      } else {
-        textArrayIndex++;
-        if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-        setTimeout(type, typingDelay + 1100);
-      }
-    }
-
-    if (textArray.length) setTimeout(type, newTextDelay + 250);
-  }
-
-  // 6. REVEAL ON SCROLL
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    root: null,
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
   });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  mobileNavClose?.addEventListener('click', window.closeMobileNav);
+  mobileNavBackdrop?.addEventListener('click', window.closeMobileNav);
 
-  // 7. STAT COUNTERS
-  const statNumbers = document.querySelectorAll('.stat-num');
-  const statObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const target = parseInt(entry.target.getAttribute('data-target'));
-        const duration = 2000;
-        const step = Math.max(1, target / (duration / 16));
-        let current = 0;
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav?.classList.contains('open')) {
+      window.closeMobileNav();
+    }
+  });
 
-        const updateCounter = () => {
-          current += step;
-          if (current < target) {
-            entry.target.textContent = Math.ceil(current);
-            requestAnimationFrame(updateCounter);
-          } else {
-            entry.target.textContent = target;
-          }
-        };
 
-        updateCounter();
-        observer.unobserve(entry.target);
-      }
+  /* ════════════════════════════
+     5. SCROLL REVEAL
+  ════════════════════════════ */
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    const revealObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
     });
-  }, { threshold: 0.5 });
 
-  statNumbers.forEach(stat => statObserver.observe(stat));
+    revealEls.forEach(el => revealObs.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
 
-  // 8. CONTACT FORM HANDLER
-  window.handleContact = () => {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
+
+  /* ════════════════════════════
+     6. CONTACT FORM
+  ════════════════════════════ */
+  window.handleContact = function () {
+    const name = document.getElementById('name')?.value?.trim();
+    const email = document.getElementById('email')?.value?.trim();
+    const subject = document.getElementById('subject')?.value?.trim();
+    const message = document.getElementById('message')?.value?.trim();
     const feedback = document.getElementById('form-feedback');
 
+    if (!feedback) return;
+
     if (!name || !email || !message) {
-      feedback.textContent = "Please fill in all required fields (Name, Email, Message).";
-      feedback.style.color = "var(--coral)";
+      feedback.textContent = 'Please fill in Name, Email, and Message.';
+      feedback.style.color = 'var(--coral)';
       return;
     }
 
-    const btn = document.querySelector('.contact-form-card button');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailReg.test(email)) {
+      feedback.textContent = 'Please enter a valid email address.';
+      feedback.style.color = 'var(--coral)';
+      return;
+    }
+
+    const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+    if (!submitBtn) return;
+
+    const originalHtml = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         access_key: 'cd8ae258-1763-4524-a1ed-7663bafed92e',
-        name: name,
-        email: email,
-        subject: subject || 'New Inquiry from Portfolio',
-        message: message
+        name,
+        email,
+        subject: subject || 'New Portfolio Inquiry',
+        message
       })
     })
-      .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
-          document.getElementById('name').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('subject').value = '';
-          document.getElementById('message').value = '';
-
-          feedback.textContent = "Message sent successfully! I'll get back to you soon.";
-          feedback.style.color = "var(--lime)";
+      .then(async (res) => {
+        const json = await res.json();
+        if (res.ok) {
+          ['name', 'email', 'subject', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+          });
+          feedback.textContent = "Message sent! I'll get back to you soon.";
+          feedback.style.color = 'var(--lime)';
         } else {
-          feedback.textContent = json.message || "Something went wrong!";
-          feedback.style.color = "var(--coral)";
+          feedback.textContent = json.message || 'Something went wrong.';
+          feedback.style.color = 'var(--coral)';
         }
       })
-      .catch(error => {
-        feedback.textContent = "Network error. Please try again later.";
-        feedback.style.color = "var(--coral)";
+      .catch(() => {
+        feedback.textContent = 'Network error. Please try again.';
+        feedback.style.color = 'var(--coral)';
       })
       .finally(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
+        submitBtn.innerHTML = originalHtml;
+        submitBtn.disabled = false;
         setTimeout(() => {
-          if (feedback.textContent.includes("successfully")) {
-            feedback.textContent = "";
-          }
-        }, 5000);
+          if (feedback.textContent.includes("sent")) feedback.textContent = '';
+        }, 6000);
       });
   };
 
-  // 9. CREATIVE FILTERS
-  const filterBtns = document.querySelectorAll('.c-filter');
+
+  /* ════════════════════════════
+     7. CREATIVE WORK FILTERS
+  ════════════════════════════ */
+  const filterBtns = document.querySelectorAll('.cf-btn');
   const creativeCards = document.querySelectorAll('.creative-card');
 
-  if (filterBtns.length > 0 && creativeCards.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove active class from all
-        filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active to clicked
-        btn.classList.add('active');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
 
-        const filterValue = btn.getAttribute('data-filter');
+      const filter = btn.getAttribute('data-filter');
 
-        creativeCards.forEach(card => {
-          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-            card.style.display = 'flex';
+      creativeCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const show = filter === 'all' || cat === filter;
+
+        if (show) {
+          card.style.display = 'flex';
+          card.style.flexDirection = 'column';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+          requestAnimationFrame(() => {
             setTimeout(() => {
+              card.style.transition = 'opacity 0.35s, transform 0.35s';
               card.style.opacity = '1';
               card.style.transform = 'scale(1)';
-            }, 50);
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-              card.style.display = 'none';
-            }, 300);
-          }
-        });
+            }, 30);
+          });
+        } else {
+          card.style.transition = 'opacity 0.25s, transform 0.25s';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 280);
+        }
       });
     });
-  }
+  });
 
-  // 10. CERTIFICATES CAROUSEL
+
+  /* ════════════════════════════
+     8. CERTS CAROUSEL
+  ════════════════════════════ */
   const certsGrid = document.getElementById('certsGrid');
   const certPrev = document.getElementById('certPrev');
   const certNext = document.getElementById('certNext');
 
-  if (certsGrid && certPrev && certNext) {
-    const scrollAmount = 300;
-    certPrev.addEventListener('click', () => {
-      certsGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  const SCROLL_AMT = 260;
+
+  certPrev?.addEventListener('click', () => {
+    certsGrid?.scrollBy({ left: -SCROLL_AMT, behavior: 'smooth' });
+  });
+  certNext?.addEventListener('click', () => {
+    certsGrid?.scrollBy({ left: SCROLL_AMT, behavior: 'smooth' });
+  });
+
+  // Drag-to-scroll for certs
+  if (certsGrid) {
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    certsGrid.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - certsGrid.offsetLeft;
+      scrollLeft = certsGrid.scrollLeft;
+      certsGrid.style.cursor = 'grabbing';
     });
-    certNext.addEventListener('click', () => {
-      certsGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    certsGrid.addEventListener('mouseleave', () => {
+      isDragging = false;
+      certsGrid.style.cursor = '';
+    });
+    certsGrid.addEventListener('mouseup', () => {
+      isDragging = false;
+      certsGrid.style.cursor = '';
+    });
+    certsGrid.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - certsGrid.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      certsGrid.scrollLeft = scrollLeft - walk;
     });
   }
 
-  // 11. MINI GAME (Dodge & Catch)
+
+  /* ════════════════════════════
+     9. SMOOTH SCROLL (Fallback for older browsers)
+  ════════════════════════════ */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      try {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (err) {
+        // Ignore invalid selectors
+      }
+    });
+  });
+
+
+  /* ════════════════════════════
+     10. MINI GAME — Dodge & Catch
+  ════════════════════════════ */
   const canvas = document.getElementById('gameCanvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
+  if (!canvas) return;
 
-    let gameLoop;
-    let gameActive = false;
-    let score = 0;
-    let bestScore = localStorage.getItem('vps_game_best') || 0;
-    let level = 1;
-    let lives = 3;
+  const ctx = canvas.getContext('2d');
 
-    document.getElementById('bestDisplay').textContent = bestScore;
+  let gameLoopId;
+  let gameActive = false;
+  let score = 0;
+  let bestScore = parseInt(localStorage.getItem('vps_best') || '0', 10);
+  let level = 1;
+  let lives = 3;
+  let frameCount = 0;
+  let stars = [];
+  let bugs = [];
+  let particles = [];
+  let shieldTimer = 0;
 
-    // Game Objects
-    const player = {
-      x: 300, y: 320, width: 40, height: 40,
-      color: '#22d3ee', speed: 6, vx: 0,
-      shield: false
-    };
+  // Responsive canvas
+  function resizeCanvas() {
+    const wrapper = canvas.parentElement;
+    if (!wrapper) return;
+    const w = Math.min(wrapper.clientWidth - 32, 640);
+    canvas.style.width = w + 'px';
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
-    let stars = [];
-    let bugs = [];
+  document.getElementById('bestDisplay').textContent = bestScore;
 
-    // Inputs
-    const keys = { ArrowLeft: false, ArrowRight: false, a: false, d: false };
+  const player = {
+    x: 300, y: 330,
+    w: 44, h: 44,
+    speed: 6,
+    vx: 0,
+    shield: false
+  };
 
-    window.addEventListener('keydown', (e) => {
-      if (keys.hasOwnProperty(e.key)) {
-        if (['ArrowLeft', 'ArrowRight'].includes(e.key)) e.preventDefault(); // prevent scroll
-        keys[e.key] = true;
-      }
-    });
-    window.addEventListener('keyup', (e) => {
-      if (keys.hasOwnProperty(e.key)) keys[e.key] = false;
-    });
+  const keys = { arrowleft: false, arrowright: false, a: false, d: false };
 
-    function updateGameInfo() {
-      document.getElementById('scoreDisplay').textContent = score;
-      document.getElementById('levelDisplay').textContent = level;
-      document.getElementById('livesDisplay').textContent = '❤'.repeat(lives) + '♡'.repeat(3 - lives);
+  const gameKeydown = (e) => {
+    const key = e.key.toLowerCase();
+    if (keys.hasOwnProperty(key)) {
+      keys[key] = true;
+      if (['arrowleft', 'arrowright'].includes(key) && gameActive) e.preventDefault();
     }
+  };
+  const gameKeyup = (e) => { 
+    const key = e.key.toLowerCase();
+    if (keys.hasOwnProperty(key)) keys[key] = false; 
+  };
 
-    function createEntity(type) {
-      const x = Math.random() * (canvas.width - 30);
-      if (type === 'star') {
-        stars.push({ x, y: -30, size: 20, speed: 2 + Math.random() * 2 + (level * 0.5) });
-      } else if (type === 'bug') {
-        bugs.push({ x, y: -30, size: 25, speed: 3 + Math.random() * 3 + (level * 0.8) });
-      }
+  window.addEventListener('keydown', gameKeydown);
+  window.addEventListener('keyup', gameKeyup);
+
+  // Touch controls for mobile (Direct Drag)
+  function handleTouch(e) {
+    if (!gameActive) return;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    let newX = (e.touches[0].clientX - rect.left) * scaleX - player.w / 2;
+    player.x = Math.max(0, Math.min(canvas.width - player.w, newX));
+    if (e.cancelable) e.preventDefault();
+  }
+  canvas.addEventListener('touchstart', handleTouch, { passive: false });
+  canvas.addEventListener('touchmove', handleTouch, { passive: false });
+  canvas.addEventListener('touchend', (e) => {
+    if (e.cancelable && gameActive) e.preventDefault();
+  });
+
+  function updateHUD() {
+    const sd = document.getElementById('scoreDisplay');
+    const ld = document.getElementById('levelDisplay');
+    const bd = document.getElementById('bestDisplay');
+    const liv = document.getElementById('livesDisplay');
+    if (sd) sd.textContent = score;
+    if (ld) ld.textContent = level;
+    if (bd) bd.textContent = bestScore;
+    if (liv) liv.textContent = '❤'.repeat(lives) + '♡'.repeat(3 - lives);
+  }
+
+  function spawnStar() {
+    const x = Math.random() * (canvas.width - 30) + 10;
+    stars.push({ x, y: -30, size: 18, speed: 1.8 + Math.random() * 1.5 + level * 0.4 });
+  }
+
+  function spawnBug() {
+    const x = Math.random() * (canvas.width - 30) + 10;
+    bugs.push({ x, y: -30, size: 22, speed: 2.5 + Math.random() * 2 + level * 0.65 });
+  }
+
+  function spawnParticle(x, y, color) {
+    for (let i = 0; i < 8; i++) {
+      const angle = (Math.PI * 2 / 8) * i;
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * (1.5 + Math.random() * 2),
+        vy: Math.sin(angle) * (1.5 + Math.random() * 2),
+        life: 1,
+        color,
+        size: 3 + Math.random() * 3
+      });
     }
+  }
 
-    function drawPlayer() {
-      ctx.fillStyle = player.color;
+  function rectsOverlap(a, b) {
+    return a.x < b.x + b.size && a.x + a.w > b.x &&
+      a.y < b.y + b.size && a.y + a.h > b.y;
+  }
+
+  function drawPlayer(ctx) {
+    const cx = player.x + player.w / 2;
+    const cy = player.y + player.h / 2;
+
+    if (player.shield || shieldTimer > 0) {
+      ctx.save();
+      ctx.strokeStyle = shieldTimer > 0 ? '#a3e635' : 'rgba(163,230,53,0.5)';
+      ctx.lineWidth = 2.5;
+      ctx.shadowColor = '#a3e635';
+      ctx.shadowBlur = 12;
       ctx.beginPath();
-      ctx.roundRect(player.x, player.y, player.width, player.height, 8);
+      ctx.arc(cx, cy, 28, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // Player body — glowing square
+    ctx.save();
+    ctx.shadowColor = '#22d3ee';
+    ctx.shadowBlur = 16;
+    ctx.fillStyle = 'rgba(34, 211, 238, 0.15)';
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.w, player.h, 10);
+    ctx.fill();
+
+    ctx.strokeStyle = '#22d3ee';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.w, player.h, 10);
+    ctx.stroke();
+    ctx.restore();
+
+    // Icon (code symbol <>)
+    ctx.save();
+    ctx.fillStyle = '#67e8f9';
+    ctx.font = 'bold 18px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('<>', cx, cy);
+    ctx.restore();
+  }
+
+  function drawStar(star) {
+    ctx.save();
+    ctx.fillStyle = '#fbbf24';
+    ctx.shadowColor = '#fbbf24';
+    ctx.shadowBlur = 14;
+    ctx.font = `${star.size}px Arial`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('★', star.x + star.size / 2, star.y + star.size / 2);
+    ctx.restore();
+  }
+
+  function drawBug(bug) {
+    ctx.save();
+    ctx.font = `${bug.size}px Arial`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('🪲', bug.x + bug.size / 2, bug.y + bug.size / 2);
+    ctx.restore();
+  }
+
+  function drawParticles() {
+    particles.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
       ctx.fill();
+      ctx.restore();
+    });
+  }
 
-      if (player.shield) {
-        ctx.strokeStyle = '#a3e635';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(player.x + 20, player.y + 20, 28, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-    }
+  function drawBackground() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    function drawStar(star) {
-      ctx.fillStyle = '#fbbf24';
-      ctx.font = '20px "Font Awesome 6 Free", "FontAwesome"';
-      ctx.fontWeight = '900';
-      ctx.fillText('★', star.x, star.y + 20);
-    }
-
-    function drawBug(bug) {
-      ctx.fillStyle = '#fb7185';
-      ctx.font = '24px "Font Awesome 6 Free", "FontAwesome"';
-      ctx.fontWeight = '900';
-      ctx.fillText('🪲', bug.x, bug.y + 20); // Bug Emoji fallback to text
-    }
-
-    function checkCollision(rect1, rect2) {
-      return (
-        rect1.x < rect2.x + rect2.size &&
-        rect1.x + player.width > rect2.x &&
-        rect1.y < rect2.y + rect2.size &&
-        rect1.y + player.height > rect2.y
-      );
-    }
-
-    function gameOver() {
-      gameActive = false;
-      cancelAnimationFrame(gameLoop);
-
-      if (score > bestScore) {
-        bestScore = score;
-        localStorage.setItem('vps_game_best', bestScore);
-        document.getElementById('bestDisplay').textContent = bestScore;
-      }
-
-      ctx.fillStyle = 'rgba(7, 8, 15, 0.8)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#f1f0f8';
-      ctx.font = 'bold 36px Syne, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
-
-      ctx.font = '20px Syne, sans-serif';
-      ctx.fillStyle = '#8b5cf6';
-      ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height / 2 + 20);
-
-      document.getElementById('game-start-btn').innerHTML = '<i class="fa-solid fa-rotate-right"></i> Play Again';
-      document.getElementById('game-start-btn').style.display = 'inline-flex';
-    }
-
-    function update() {
-      if (!gameActive) return;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Player Movement
-      if (keys.ArrowLeft || keys.a) player.vx = -player.speed;
-      else if (keys.ArrowRight || keys.d) player.vx = player.speed;
-      else player.vx = 0;
-
-      player.x += player.vx;
-
-      // Boundaries
-      if (player.x < 0) player.x = 0;
-      if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
-
-      drawPlayer();
-
-      // Spawn entities
-      if (Math.random() < 0.03) createEntity('star');
-      if (Math.random() < 0.04 + (level * 0.01)) createEntity('bug');
-
-      // Update Stars
-      for (let i = stars.length - 1; i >= 0; i--) {
-        stars[i].y += stars[i].speed;
-        drawStar(stars[i]);
-
-        if (checkCollision(player, stars[i])) {
-          score += 10;
-          stars.splice(i, 1);
-
-          // Level up
-          if (score > 0 && score % 100 === 0) {
-            level++;
-            player.shield = true;
-            setTimeout(() => player.shield = false, 3000);
-          }
-          updateGameInfo();
-        } else if (stars[i].y > canvas.height) {
-          stars.splice(i, 1);
-        }
-      }
-
-      // Update Bugs
-      for (let i = bugs.length - 1; i >= 0; i--) {
-        bugs[i].y += bugs[i].speed;
-        drawBug(bugs[i]);
-
-        if (checkCollision(player, bugs[i])) {
-          bugs.splice(i, 1);
-          if (player.shield) {
-            player.shield = false;
-          } else {
-            lives--;
-            updateGameInfo();
-
-            // Flash effect
-            ctx.fillStyle = 'rgba(251, 113, 133, 0.3)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            if (lives <= 0) {
-              gameOver();
-              return;
-            }
-          }
-        } else if (bugs[i].y > canvas.height) {
-          bugs.splice(i, 1);
-        }
-      }
-
-      gameLoop = requestAnimationFrame(update);
-    }
-
-    window.startGame = () => {
-      document.getElementById('game-start-btn').style.display = 'none';
-      score = 0;
-      level = 1;
-      lives = 3;
-      player.x = 300;
-      stars = [];
-      bugs = [];
-      gameActive = true;
-      updateGameInfo();
-      ctx.textAlign = 'left';
-      update();
-    };
-
-    // Initial canvas setup
-    ctx.fillStyle = 'rgba(7, 8, 15, 0.5)';
+    // Dark bg
+    ctx.fillStyle = '#07080f';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#9490b4';
-    ctx.font = '16px JetBrains Mono, monospace';
+
+    // Subtle grid
+    ctx.strokeStyle = 'rgba(139,92,246,0.05)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < canvas.width; x += 40) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+    }
+    for (let y = 0; y < canvas.height; y += 40) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+    }
+
+    // Bottom glow
+    const grad = ctx.createLinearGradient(0, canvas.height - 60, 0, canvas.height);
+    grad.addColorStop(0, 'rgba(34,211,238,0.06)');
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, canvas.height - 60, canvas.width, 60);
+  }
+
+  let flashAlpha = 0;
+
+  function gameOver() {
+    gameActive = false;
+    cancelAnimationFrame(gameLoopId);
+
+    if (score > bestScore) {
+      bestScore = score;
+      localStorage.setItem('vps_best', bestScore);
+    }
+    updateHUD();
+
+    // Game over screen
+    ctx.fillStyle = 'rgba(7, 8, 15, 0.85)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Card
+    const cx = canvas.width / 2;
+    ctx.save();
+    ctx.fillStyle = 'rgba(15, 17, 28, 0.9)';
+    ctx.strokeStyle = 'rgba(139,92,246,0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.shadowColor = '#8b5cf6';
+    ctx.shadowBlur = 20;
+    ctx.beginPath();
+    ctx.roundRect(cx - 140, canvas.height / 2 - 70, 280, 140, 16);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.fillStyle = '#f1f0f8';
+    ctx.font = 'bold 28px Syne, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('GAME OVER', cx, canvas.height / 2 - 20);
+
+    ctx.font = '16px Syne, sans-serif';
+    ctx.fillStyle = '#a78bfa';
+    ctx.fillText(`Score: ${score}`, cx, canvas.height / 2 + 10);
+
+    ctx.font = '13px JetBrains Mono, monospace';
+    ctx.fillStyle = '#67e8f9';
+    ctx.fillText(`Best: ${bestScore}`, cx, canvas.height / 2 + 35);
+
+    const btn = document.getElementById('game-start-btn');
+    if (btn) {
+      btn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Play Again';
+      btn.style.display = 'inline-flex';
+    }
+  }
+
+  let lastTime = 0;
+
+  function update(time) {
+    if (!gameActive) return;
+    
+    // Request next frame
+    gameLoopId = requestAnimationFrame(update);
+
+    // Throttle to roughly 60fps to prevent insane speeds on high refresh rate monitors
+    if (time - lastTime < 16) return;
+    lastTime = time;
+
+    frameCount++;
+
+    drawBackground();
+
+    // Move player (keyboard)
+    if (keys.arrowleft || keys.a) player.vx = -player.speed;
+    else if (keys.arrowright || keys.d) player.vx = player.speed;
+    else player.vx = 0;
+
+    player.x = Math.max(0, Math.min(canvas.width - player.w, player.x + player.vx));
+
+    // Spawn
+    if (frameCount % 70 === 0) spawnStar();
+    if (frameCount % Math.max(30, 55 - level * 3) === 0) spawnBug();
+
+    // Stars
+    for (let i = stars.length - 1; i >= 0; i--) {
+      stars[i].y += stars[i].speed;
+      drawStar(stars[i]);
+
+      if (rectsOverlap(player, stars[i])) {
+        spawnParticle(stars[i].x + stars[i].size / 2, stars[i].y + stars[i].size / 2, '#fbbf24');
+        stars.splice(i, 1);
+        score += 10;
+
+        // Level up every 100pts
+        if (score % 100 === 0) {
+          level++;
+          player.shield = true;
+          shieldTimer = 120;
+        }
+        updateHUD();
+        continue;
+      }
+      if (stars[i]?.y > canvas.height) stars.splice(i, 1);
+    }
+
+    // Bugs
+    for (let i = bugs.length - 1; i >= 0; i--) {
+      bugs[i].y += bugs[i].speed;
+      drawBug(bugs[i]);
+
+      if (rectsOverlap(player, bugs[i])) {
+        spawnParticle(bugs[i].x + bugs[i].size / 2, bugs[i].y + bugs[i].size / 2, '#fb7185');
+        bugs.splice(i, 1);
+
+        if (player.shield || shieldTimer > 0) {
+          player.shield = false;
+          shieldTimer = 0;
+        } else {
+          lives--;
+          flashAlpha = 0.4;
+          updateHUD();
+          if (lives <= 0) { gameOver(); return; }
+        }
+        continue;
+      }
+      if (bugs[i]?.y > canvas.height) bugs.splice(i, 1);
+    }
+
+    // Particles
+    particles = particles.filter(p => p.life > 0);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= 0.04;
+    });
+    drawParticles();
+
+    // Shield timer
+    if (shieldTimer > 0) shieldTimer--;
+    else player.shield = false;
+
+    // Flash effect
+    if (flashAlpha > 0) {
+      ctx.fillStyle = `rgba(251, 113, 133, ${flashAlpha})`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      flashAlpha = Math.max(0, flashAlpha - 0.04);
+    }
+
+    drawPlayer(ctx);
+
+    // Level indicator
+    if (level > 1 && frameCount % 300 < 60) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(139,92,246,0.9)';
+      ctx.font = `bold 14px Syne, sans-serif`;
+      ctx.textAlign = 'right';
+      ctx.fillText(`LVL ${level}`, canvas.width - 12, 24);
+      ctx.restore();
+    }
+
+    gameLoopId = requestAnimationFrame(update);
+  }
+
+  window.startGame = function () {
+    const btn = document.getElementById('game-start-btn');
+    if (btn) btn.style.display = 'none';
+
+    score = 0;
+    level = 1;
+    lives = 3;
+    frameCount = 0;
+    flashAlpha = 0;
+    shieldTimer = 0;
+    lastTime = performance.now(); // Reset time for frame limiter
+    player.x = canvas.width / 2 - player.w / 2;
+    player.shield = false;
+    stars = [];
+    bugs = [];
+    particles = [];
+    gameActive = true;
+
+    updateHUD();
+    cancelAnimationFrame(gameLoopId);
+    ctx.textAlign = 'left';
+    gameLoopId = requestAnimationFrame(update);
+  };
+
+  // Initial canvas idle state
+  (function initCanvas() {
+    ctx.fillStyle = '#07080f';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Grid
+    ctx.strokeStyle = 'rgba(139,92,246,0.05)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < canvas.width; x += 40) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+    }
+    for (let y = 0; y < canvas.height; y += 40) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+    }
+
+    ctx.fillStyle = 'rgba(148, 144, 180, 0.4)';
+    ctx.font = '14px JetBrains Mono, monospace';
     ctx.textAlign = 'center';
     ctx.fillText('Press Start to Play', canvas.width / 2, canvas.height / 2);
-  }
-});
+
+    ctx.fillStyle = 'rgba(139,92,246,0.25)';
+    ctx.font = '12px JetBrains Mono, monospace';
+    ctx.fillText('Use ← → arrow keys or A/D to move', canvas.width / 2, canvas.height / 2 + 28);
+  })();
+
+}); // END DOMContentLoaded
