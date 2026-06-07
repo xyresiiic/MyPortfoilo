@@ -1644,7 +1644,8 @@ code {
 
 .featured-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.35fr 0.85fr;
+  grid-template-areas: "content visual";
   gap: 2.5rem;
   align-items: center;
   background: var(--bg-card);
@@ -1680,14 +1681,15 @@ code {
 }
 
 .featured-card--reverse {
+  grid-template-columns: 0.85fr 1.35fr;
   grid-template-areas: "visual content";
 }
 
-.featured-card--reverse .fc-content {
+.fc-content {
   grid-area: content;
 }
 
-.featured-card--reverse .fc-visual {
+.fc-visual {
   grid-area: visual;
 }
 
