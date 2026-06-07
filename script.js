@@ -401,9 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (['arrowleft', 'arrowright'].includes(key) && gameActive) e.preventDefault();
     }
   };
-  const gameKeyup = (e) => { 
+  const gameKeyup = (e) => {
     const key = e.key.toLowerCase();
-    if (keys.hasOwnProperty(key)) keys[key] = false; 
+    if (keys.hasOwnProperty(key)) keys[key] = false;
   };
 
   window.addEventListener('keydown', gameKeydown);
@@ -620,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function update(time) {
     if (!gameActive) return;
-    
+
     // Request next frame
     gameLoopId = requestAnimationFrame(update);
 
