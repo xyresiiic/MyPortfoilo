@@ -441,12 +441,13 @@ body.cursor-hover #cursor-ring {
 }
 
 .mobile-nav a {
-  font-family: var(--ff-display);
-  font-size: 1.5rem;
+  font-family: var(--ff-body);
+  font-size: 1.25rem;
   font-weight: 700;
+  text-transform: uppercase;
   color: var(--text-muted);
   transition: color 0.25s;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
 }
 
 .mobile-nav a:hover {
@@ -3076,6 +3077,27 @@ footer {
   .certs-nav {
     align-self: flex-end;
   }
+
+  .cert-card {
+    min-width: 160px;
+    padding: 1.25rem 1rem;
+  }
+
+  .cert-ico {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    margin-bottom: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .cert-name {
+    font-size: 0.75rem;
+  }
+
+  .cert-org {
+    font-size: 0.6rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -3130,7 +3152,7 @@ footer {
   }
 
   .about-cards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .skills-grid {
