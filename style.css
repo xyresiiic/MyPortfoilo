@@ -437,12 +437,12 @@ body.cursor-hover #cursor-ring {
 }
 
 .mobile-nav li {
-  margin: 0.6rem 0;
+  margin: 0.4rem 0;
 }
 
 .mobile-nav a {
   font-family: var(--ff-display);
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-muted);
   transition: color 0.25s;
@@ -2948,18 +2948,19 @@ footer {
 
   .featured-card {
     grid-template-columns: 1fr;
+    grid-template-areas: none;
     padding: 2rem;
     gap: 2rem;
   }
 
-  .featured-card--reverse {
-    grid-template-areas: none;
-  }
-
-  .featured-card--reverse .fc-content,
-  .featured-card--reverse .fc-visual {
+  .featured-card .fc-content,
+  .featured-card .fc-visual {
     grid-area: auto;
     /* Required so they flow naturally instead of overlapping */
+  }
+
+  .featured-card--reverse {
+    grid-template-areas: none;
   }
 
   .contact-grid {
