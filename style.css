@@ -1974,6 +1974,32 @@ code {
   outline-offset: 2px;
 }
 
+.proj-link-btn.live-btn {
+  color: var(--lime-lt);
+  background: var(--lime-glow);
+  border-color: var(--lime-border);
+}
+
+.proj-link-btn.live-btn:hover {
+  background: rgba(163, 230, 53, 0.2);
+  border-color: var(--lime);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(163, 230, 53, 0.2);
+}
+
+.proj-link-btn.code-btn {
+  color: var(--cyan-lt);
+  background: var(--cyan-glow);
+  border-color: var(--cyan-border);
+}
+
+.proj-link-btn.code-btn:hover {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: var(--cyan);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2);
+}
+
 /* ═══════════════════════════════
    CREATIVE WORK
 ═══════════════════════════════ */
