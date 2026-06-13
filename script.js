@@ -1,7 +1,7 @@
-/* ════════════════════════════════════════════════
-   VEER PRATAP SINGH — PORTFOLIO
-   script.js · Full Redesign
-   ════════════════════════════════════════════════ */
+/* ══════════
+   PORTFOLIO
+   script.js
+   ═════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(hideLoader, 500);
   } else {
     window.addEventListener('load', () => setTimeout(hideLoader, 500));
-    // Fallback so it doesn't get stuck if resources fail to load
     setTimeout(hideLoader, 2000);
   }
 
@@ -333,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ════════════════════════════
-     9. SMOOTH SCROLL (Fallback for older browsers)
+     9. SMOOTH SCROLL 
   ════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -409,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', gameKeydown);
   window.addEventListener('keyup', gameKeyup);
 
-  // Touch controls for mobile (Direct Drag)
+  // Touch controls for mobile
   function handleTouch(e) {
     if (!gameActive) return;
     const rect = canvas.getBoundingClientRect();
@@ -733,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
     frameCount = 0;
     flashAlpha = 0;
     shieldTimer = 0;
-    lastTime = performance.now(); // Reset time for frame limiter
+    lastTime = performance.now();
     player.x = canvas.width / 2 - player.w / 2;
     player.shield = false;
     stars = [];
@@ -772,4 +771,4 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.fillText('Use ← → arrow keys or A/D to move', canvas.width / 2, canvas.height / 2 + 28);
   })();
 
-}); // END DOMContentLoaded
+});
