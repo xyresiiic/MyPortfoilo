@@ -41,44 +41,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursor = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursor-ring');
 
+  // Skip custom cursor on touch-only devices
+  const isTouchOnly = window.matchMedia('(hover: none)').matches;
+  if (isTouchOnly) {
+    if (cursor) cursor.style.display = 'none';
+    if (cursorRing) cursorRing.style.display = 'none';
+    document.body.style.cursor = 'auto';
+  }
+
   let mouseX = 0, mouseY = 0;
   let ringX = 0, ringY = 0;
-  let rafId;
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    if (cursor) cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-  });
+  if (!isTouchOnly) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // Instant dot: GPU-accelerated, zero delay
+      if (cursor) cursor.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0)`;
+    });
 
-  // Smooth ring follow with lerp
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    if (cursorRing) cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    rafId = requestAnimationFrame(animateRing);
-  }
-  animateRing();
+    // Smooth ring follow with lerp (snappier factor)
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      if (cursorRing) cursorRing.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0)`;
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
 
-  // Cursor hover state — add to all interactive elements
-  function bindCursorHover() {
-    const targets = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .cf-btn, .cert-nav-btn, .proj-link-btn');
-    targets.forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    // Cursor hover state — add to all interactive elements
+    function bindCursorHover() {
+      const targets = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .cf-btn, .cert-nav-btn, .proj-link-btn');
+      targets.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+    bindCursorHover();
+
+    // Cursor leaves window
+    document.addEventListener('mouseleave', () => {
+      if (cursor) cursor.style.opacity = '0';
+      if (cursorRing) cursorRing.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      if (cursor) cursor.style.opacity = '1';
+      if (cursorRing) cursorRing.style.opacity = '1';
     });
   }
-  bindCursorHover();
-
-  // Cursor leaves window
-  document.addEventListener('mouseleave', () => {
-    if (cursor) cursor.style.opacity = '0';
-    if (cursorRing) cursorRing.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    if (cursor) cursor.style.opacity = '1';
-    if (cursorRing) cursorRing.style.opacity = '1';
-  });
 
 
   /* ════════════════════════════
@@ -633,7 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function update(time) {
     if (!gameActive) return;
 
-    // Request next frame
+    // Schedule next frame (single call only)
     gameLoopId = requestAnimationFrame(update);
 
     // Throttle to roughly 60fps to prevent insane speeds on high refresh rate monitors
@@ -731,8 +741,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillText(`LVL ${level}`, canvas.width - 12, 24);
       ctx.restore();
     }
-
-    gameLoopId = requestAnimationFrame(update);
   }
 
   window.startGame = function () {
