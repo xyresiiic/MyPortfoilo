@@ -1,9 +1,14 @@
-/* ════════════════════════════════════════════════
-   VEER PRATAP SINGH — PORTFOLIO
-   script.js · Full Redesign
-   ════════════════════════════════════════════════ */
+const CONTACT_EMAIL = 'xyresiiic@gmail.com';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Dynamically set all contact email links and text fields
+  document.querySelectorAll('.js-email-link').forEach(el => {
+    el.href = `mailto:${CONTACT_EMAIL}`;
+  });
+  document.querySelectorAll('.js-email-text').forEach(el => {
+    el.textContent = CONTACT_EMAIL;
+  });
 
   /* ════════════════════════════
      1. LOADER
