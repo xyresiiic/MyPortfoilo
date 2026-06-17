@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     el.textContent = CONTACT_EMAIL;
   });
 
+  // Dynamically set certifications count from DOM cards
+  const certCards = document.querySelectorAll('#certsGrid .cert-card');
+  const certCountEl = document.querySelector('.js-cert-count');
+  if (certCountEl && certCards.length > 0) {
+    certCountEl.textContent = certCards.length;
+  }
+
   /* ════════════════════════════
      1. LOADER
   ════════════════════════════ */
