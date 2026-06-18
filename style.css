@@ -2390,56 +2390,57 @@ code {
   gap: 1.5rem;
 }
 
-.certs-nav {
-  display: flex;
-  gap: 0.75rem;
+/* ── Group wrapper ── */
+.certs-group {
+  margin-bottom: 2.5rem;
 }
 
-.cert-nav-btn {
-  width: 40px;
-  height: 40px;
-  background: var(--bg-2);
-  border: 1px solid var(--border-1);
-  border-radius: 50%;
+.certs-group:last-child {
+  margin-bottom: 0;
+}
+
+.certs-group-label {
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet-lt);
+  margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--text-sec);
-  font-size: 0.75rem;
-  cursor: none;
-  transition: all 0.3s;
+  gap: 0.6rem;
 }
 
-.cert-nav-btn:hover {
-  background: var(--violet-glow);
-  border-color: var(--violet);
-  color: var(--violet-lt);
+.certs-group-label i {
+  font-size: 0.85rem;
+  opacity: 0.7;
 }
 
-.certs-track {
-  display: flex;
+.certs-group-label--alt {
+  color: var(--cyan-lt);
+}
+
+/* ── Grid layouts ── */
+.certs-grid {
+  display: grid;
   gap: 1.25rem;
-  overflow-x: auto;
-  padding-bottom: 1.5rem;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.certs-track::-webkit-scrollbar {
-  display: none;
+.certs-grid--pro {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
+.certs-grid--rec {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+
+/* ── Base card ── */
 .cert-card {
-  min-width: 220px;
-  flex-shrink: 0;
-  scroll-snap-align: start;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-1);
   border-radius: var(--radius-md);
-  padding: 1.75rem 1.25rem;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s;
@@ -2451,6 +2452,45 @@ code {
   box-shadow: 0 12px 32px rgba(139, 92, 246, 0.2);
 }
 
+/* ── Professional variant (larger, violet tint) ── */
+.cert-card--pro {
+  padding: 2rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.06) 0%,
+    var(--bg-card) 60%
+  );
+  border-color: var(--violet-border);
+}
+
+.cert-card--pro .cert-name {
+  font-size: 0.9rem;
+}
+
+.cert-card--pro .cert-ico {
+  width: 52px;
+  height: 52px;
+  font-size: 1.4rem;
+}
+
+/* ── Recognition variant (smaller, lighter) ── */
+.cert-card--rec {
+  padding: 1.35rem 1rem;
+  background: rgba(13, 15, 24, 0.55);
+}
+
+.cert-card--rec .cert-name {
+  font-size: 0.78rem;
+}
+
+.cert-card--rec .cert-ico {
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Icon base ── */
 .cert-ico {
   width: 48px;
   height: 48px;
@@ -3100,25 +3140,43 @@ footer {
     gap: 1rem;
   }
 
-  .certs-nav {
-    align-self: flex-end;
+  .certs-grid--pro {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 
-  .cert-card {
-    min-width: 160px;
-    padding: 1.25rem 1rem;
+  .certs-grid--rec {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 
-  .cert-ico {
-    width: 38px;
-    height: 38px;
-    font-size: 1.1rem;
+  .cert-card--pro {
+    padding: 1.5rem 1rem;
+  }
+
+  .cert-card--pro .cert-ico {
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
     margin-bottom: 0.85rem;
+  }
+
+  .cert-card--pro .cert-name {
+    font-size: 0.78rem;
+  }
+
+  .cert-card--rec {
+    padding: 1.1rem 0.85rem;
+  }
+
+  .cert-card--rec .cert-ico {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
     border-radius: 10px;
   }
 
-  .cert-name {
-    font-size: 0.75rem;
+  .cert-card--rec .cert-name {
+    font-size: 0.7rem;
   }
 
   .cert-org {

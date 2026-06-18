@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Dynamically set certifications count from DOM cards
-  const certCards = document.querySelectorAll('#certsGrid .cert-card');
+  const certCards = document.querySelectorAll('#certs .cert-card');
   const certCountEl = document.querySelector('.js-cert-count');
   if (certCountEl && certCards.length > 0) {
     certCountEl.textContent = certCards.length;
@@ -309,49 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ════════════════════════════
-     8. CERTS CAROUSEL
+     8. (Certs section is now a static grid — no carousel JS needed)
   ════════════════════════════ */
-  const certsGrid = document.getElementById('certsGrid');
-  const certPrev = document.getElementById('certPrev');
-  const certNext = document.getElementById('certNext');
-
-  const SCROLL_AMT = 260;
-
-  certPrev?.addEventListener('click', () => {
-    certsGrid?.scrollBy({ left: -SCROLL_AMT, behavior: 'smooth' });
-  });
-  certNext?.addEventListener('click', () => {
-    certsGrid?.scrollBy({ left: SCROLL_AMT, behavior: 'smooth' });
-  });
-
-  // Drag-to-scroll for certs
-  if (certsGrid) {
-    let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
-    certsGrid.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX - certsGrid.offsetLeft;
-      scrollLeft = certsGrid.scrollLeft;
-      certsGrid.style.cursor = 'grabbing';
-    });
-    certsGrid.addEventListener('mouseleave', () => {
-      isDragging = false;
-      certsGrid.style.cursor = '';
-    });
-    certsGrid.addEventListener('mouseup', () => {
-      isDragging = false;
-      certsGrid.style.cursor = '';
-    });
-    certsGrid.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - certsGrid.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      certsGrid.scrollLeft = scrollLeft - walk;
-    });
-  }
 
 
   /* ════════════════════════════

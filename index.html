@@ -742,71 +742,78 @@
           <p class="section-label reveal">Credentials</p>
           <h2 class="section-title reveal">Certifications &amp;<br><em>Recognition</em></h2>
         </div>
-        <div class="certs-nav reveal" aria-label="Scroll certificates carousel">
-          <button id="certPrev" class="cert-nav-btn" aria-label="Previous certificates">
-            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <button id="certNext" class="cert-nav-btn" aria-label="Next certificates">
-            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-          </button>
+      </div>
+
+      <!-- Group 1: Professional Certifications -->
+      <div class="certs-group reveal" id="certsGrid">
+        <h3 class="certs-group-label">
+          <i class="fa-solid fa-certificate" aria-hidden="true"></i> Professional Certifications
+        </h3>
+        <div class="certs-grid certs-grid--pro" role="list">
+          <div class="cert-card cert-card--pro reveal" role="listitem">
+            <span class="cert-ico amber"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></span>
+            <p class="cert-name">Web Dev Fundamentals</p>
+            <p class="cert-org">IBM</p>
+          </div>
+          <div class="cert-card cert-card--pro reveal" role="listitem">
+            <span class="cert-ico coral"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
+            <p class="cert-name">Virtual Tech Internship</p>
+            <p class="cert-org">Deloitte / Forage</p>
+          </div>
+          <div class="cert-card cert-card--pro reveal" role="listitem">
+            <span class="cert-ico lime"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span>
+            <p class="cert-name">Software Eng. Simulation</p>
+            <p class="cert-org">Accenture</p>
+          </div>
+          <div class="cert-card cert-card--pro reveal" role="listitem">
+            <span class="cert-ico violet"><i class="fa-brands fa-aws" aria-hidden="true"></i></span>
+            <p class="cert-name">Solution Architecture</p>
+            <p class="cert-org">AWS</p>
+          </div>
+          <div class="cert-card cert-card--pro reveal" role="listitem">
+            <span class="cert-ico cyan"><i class="fa-solid fa-chart-bar" aria-hidden="true"></i></span>
+            <p class="cert-name">GenAI Data Analytics</p>
+            <p class="cert-org">Tata</p>
+          </div>
         </div>
       </div>
 
-      <div class="certs-track" id="certsGrid" role="list">
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico violet"><i class="fa-solid fa-camera" aria-hidden="true"></i></span>
-          <p class="cert-name">3rd Place - Photography</p>
-          <p class="cert-org">School Competition</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico amber"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
-          <p class="cert-name">1st Place - Content Creation</p>
-          <p class="cert-org">Institute</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico lime"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
-          <p class="cert-name">Basics of Quadcopter</p>
-          <p class="cert-org">IIT Roorkee</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico cyan"><i class="fa-solid fa-link" aria-hidden="true"></i></span>
-          <p class="cert-name">Blockchain Technology</p>
-          <p class="cert-org">IIT Roorkee</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico amber"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></span>
-          <p class="cert-name">Web Dev Fundamentals</p>
-          <p class="cert-org">IBM</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico coral"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
-          <p class="cert-name">Virtual Tech Internship</p>
-          <p class="cert-org">Deloitte / Forage</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico lime"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span>
-          <p class="cert-name">Software Eng. Sim.</p>
-          <p class="cert-org">Accenture</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico violet"><i class="fa-brands fa-aws" aria-hidden="true"></i></span>
-          <p class="cert-name">Solution Architecture</p>
-          <p class="cert-org">AWS</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico cyan"><i class="fa-solid fa-chart-bar" aria-hidden="true"></i></span>
-          <p class="cert-name">GenAI Data Analytics</p>
-          <p class="cert-org">Tata</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico amber"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span>
-          <p class="cert-name">Web Dev Internship</p>
-          <p class="cert-org">CodSoft</p>
-        </div>
-        <div class="cert-card reveal" role="listitem">
-          <span class="cert-ico coral"><i class="fa-solid fa-c" aria-hidden="true"></i></span>
-          <p class="cert-name">C++ Internship</p>
-          <p class="cert-org">CodeAlpha</p>
+      <!-- Group 2: Recognition & Achievements -->
+      <div class="certs-group reveal">
+        <h3 class="certs-group-label certs-group-label--alt">
+          <i class="fa-solid fa-award" aria-hidden="true"></i> Recognition & Achievements
+        </h3>
+        <div class="certs-grid certs-grid--rec" role="list">
+          <div class="cert-card cert-card--rec reveal" role="listitem">
+            <span class="cert-ico violet"><i class="fa-solid fa-camera" aria-hidden="true"></i></span>
+            <p class="cert-name">3rd Place — Photography</p>
+            <p class="cert-org">School Competition</p>
+          </div>
+          <div class="cert-card cert-card--rec reveal" role="listitem">
+            <span class="cert-ico amber"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
+            <p class="cert-name">1st Place — Content Creation</p>
+            <p class="cert-org">Institute</p>
+          </div>
+          <div class="cert-card cert-card--rec reveal" role="listitem">
+            <span class="cert-ico lime"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
+            <p class="cert-name">Basics of Quadcopter</p>
+            <p class="cert-org">IIT Roorkee</p>
+          </div>
+          <div class="cert-card cert-card--rec reveal" role="listitem">
+            <span class="cert-ico cyan"><i class="fa-solid fa-link" aria-hidden="true"></i></span>
+            <p class="cert-name">Blockchain Technology</p>
+            <p class="cert-org">IIT Roorkee</p>
+          </div>
+          <div class="cert-card cert-card--rec reveal" role="listitem">
+            <span class="cert-ico amber"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span>
+            <p class="cert-name">Web Dev Internship</p>
+            <p class="cert-org">CodSoft</p>
+          </div>
+          <div class="cert-card cert-card--rec reveal" role="listitem">
+            <span class="cert-ico coral"><i class="fa-solid fa-c" aria-hidden="true"></i></span>
+            <p class="cert-name">C++ Internship</p>
+            <p class="cert-org">CodeAlpha</p>
+          </div>
         </div>
       </div>
     </div>
